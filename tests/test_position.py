@@ -28,3 +28,13 @@ class PositionTest(TestCase):
         position = Position(fret=2, guitar_string=6, finger=5, is_highlighted=True)
 
         self.assertEqual(True, position.is_highlighted)
+
+    def test_position_fret_defaults_to_0(self):
+        position = Position(guitar_string=1)
+
+        self.assertEqual(0, position.fret)
+
+    def test_finger_defaults_to_0(self):
+        position = Position(guitar_string=1)
+
+        self.assertEqual(0, position.finger)
