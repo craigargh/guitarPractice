@@ -19,5 +19,12 @@ class PositionTest(TestCase):
 
         self.assertEqual(5, position.finger)
 
+    def test_position_is_highlighted_is_false_by_default(self):
+        position = Position(fret=2, guitar_string=6, finger=5)
+
+        self.assertEqual(False, position.is_highlighted)
+
     def test_position_stores_is_highlighted(self):
-        pass
+        position = Position(fret=2, guitar_string=6, finger=5, is_highlighted=True)
+
+        self.assertEqual(True, position.is_highlighted)
