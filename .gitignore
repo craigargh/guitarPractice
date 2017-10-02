@@ -7,3 +7,4 @@ build/
 .coverage.*
 instance/
 .webassets-cache
+.idea
