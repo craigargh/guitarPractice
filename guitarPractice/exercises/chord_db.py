@@ -1,6 +1,11 @@
 from guitarPractice.exercises.chord import Chord
 from guitarPractice.exercises.position import Position
 
+"""
+major scale nine chords
+Cmaj9-Dm9-Em7b9-Fmaj9-G9-Am9-Bm7b9b5
+"""
+
 
 def get_major_scale_triad_chords() -> iter:
     return [
