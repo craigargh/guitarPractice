@@ -8,7 +8,9 @@ def get_major_scale_chords() -> iter:
         d_minor(),
         e_minor(),
         f_major(),
-        g_major()
+        g_major(),
+        a_minor(),
+        b_diminished(),
     ]
 
 
@@ -42,7 +44,7 @@ def e_minor():
         Position(guitar_string=4, fret=2, finger=3, is_highlighted=True),
         Position(guitar_string=3),
         Position(guitar_string=2),
-        Position(guitar_string=1),
+        Position(guitar_string=1, is_highlighted=True),
     ]
 
     return Chord('E', 'Minor', positions)
@@ -64,9 +66,32 @@ def g_major():
         Position(guitar_string=6, fret=3, finger=2, is_highlighted=True),
         Position(guitar_string=5, fret=2, finger=1),
         Position(guitar_string=4),
-        Position(guitar_string=3),
+        Position(guitar_string=3, is_highlighted=True),
         Position(guitar_string=2),
-        Position(guitar_string=1, fret=3, finger=3),
+        Position(guitar_string=1, fret=3, finger=3, is_highlighted=True),
     ]
 
     return Chord('G', 'Major', positions)
+
+
+def a_minor():
+    positions = [
+        Position(guitar_string=5, is_highlighted=True),
+        Position(guitar_string=4, fret=2, finger=2),
+        Position(guitar_string=3, fret=2, finger=3, is_highlighted=True),
+        Position(guitar_string=2, fret=1, finger=1),
+        Position(guitar_string=1, is_highlighted=True)
+    ]
+
+    return Chord('A', 'Minor', positions)
+
+
+def b_diminished():
+    positions = [
+        Position(guitar_string=5, fret=2, finger=1, is_highlighted=True),
+        Position(guitar_string=4, fret=3, finger=2),
+        Position(guitar_string=3, fret=4, finger=4, is_highlighted=True),
+        Position(guitar_string=2, fret=3, finger=3),
+    ]
+
+    return Chord('B', 'Diminished', positions)
