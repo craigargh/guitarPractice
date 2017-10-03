@@ -1,12 +1,19 @@
-def in_order_sequencer(*shapes):
-    return [
-        note
+from typing import List
+
+from guitarPractice.exercises.chord import Chord
+from guitarPractice.exercises.position import Position
+
+
+def in_order_sequencer(*shapes: List[Chord]) -> List[Position]:
+    sequence = [
+        position
         for shape in shapes
-        for note in shape
+        for position in shape
     ]
+    return sequence
 
 
-def repeat_first_shape_sequencer(*shapes):
+def repeat_first_shape_sequencer(*shapes) -> List[Position]:
     shapes_list = list(shapes)
     first_shape = shapes_list.pop(0)
 

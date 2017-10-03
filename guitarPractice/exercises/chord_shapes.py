@@ -2,7 +2,7 @@ from guitarPractice.exercises.chord import Chord
 from guitarPractice.exercises.position import Position
 
 
-def c_major():
+def c_major() -> Chord:
     positions = [
         Position(guitar_string=5, fret=3, finger=3, is_highlighted=True),
         Position(guitar_string=4, fret=2, finger=2),
@@ -14,7 +14,7 @@ def c_major():
     return Chord('C', 'Major', positions)
 
 
-def c_major_seven():
+def c_major_seven() -> Chord:
     positions = [
         Position(guitar_string=5, fret=3, finger=3, is_highlighted=True),
         Position(guitar_string=4, fret=2, finger=2),
@@ -26,7 +26,7 @@ def c_major_seven():
     return Chord('C', 'Major 7', positions)
 
 
-def d_minor():
+def d_minor() -> Chord:
     positions = [
         Position(guitar_string=4, is_highlighted=True),
         Position(guitar_string=3, fret=2, finger=2),
@@ -37,7 +37,7 @@ def d_minor():
     return Chord('D', 'Minor', positions)
 
 
-def d_minor_seven():
+def d_minor_seven() -> Chord:
     positions = [
         Position(guitar_string=4, is_highlighted=True),
         Position(guitar_string=3, fret=2, finger=2),
@@ -48,7 +48,7 @@ def d_minor_seven():
     return Chord('D', 'Minor 7', positions)
 
 
-def e_minor():
+def e_minor() -> Chord:
     positions = [
         Position(guitar_string=6, is_highlighted=True),
         Position(guitar_string=5, fret=2, finger=2),
@@ -61,7 +61,7 @@ def e_minor():
     return Chord('E', 'Minor', positions)
 
 
-def e_minor_seven():
+def e_minor_seven() -> Chord:
     positions = [
         Position(guitar_string=6, is_highlighted=True),
         Position(guitar_string=5, fret=2, finger=1),
@@ -74,7 +74,7 @@ def e_minor_seven():
     return Chord('E', 'Minor 7', positions)
 
 
-def f_major():
+def f_major() -> Chord:
     positions = [
         Position(guitar_string=4, fret=3, finger=3, is_highlighted=True),
         Position(guitar_string=3, fret=2, finger=2),
@@ -85,7 +85,7 @@ def f_major():
     return Chord('F', 'Major', positions)
 
 
-def f_major_seven():
+def f_major_seven() -> Chord:
     positions = [
         Position(guitar_string=4, fret=3, finger=3, is_highlighted=True),
         Position(guitar_string=3, fret=2, finger=2),
@@ -96,7 +96,7 @@ def f_major_seven():
     return Chord('F', 'Major', positions)
 
 
-def g_major():
+def g_major() -> Chord:
     positions = [
         Position(guitar_string=6, fret=3, finger=2, is_highlighted=True),
         Position(guitar_string=5, fret=2, finger=1),
@@ -109,7 +109,7 @@ def g_major():
     return Chord('G', 'Major', positions)
 
 
-def g_seven():
+def g_seven() -> Chord:
     positions = [
         Position(guitar_string=6, fret=3, finger=3, is_highlighted=True),
         Position(guitar_string=5, fret=2, finger=2),
@@ -122,7 +122,7 @@ def g_seven():
     return Chord('G', '7', positions)
 
 
-def a_minor():
+def a_minor() -> Chord:
     positions = [
         Position(guitar_string=5, is_highlighted=True),
         Position(guitar_string=4, fret=2, finger=2),
@@ -134,7 +134,7 @@ def a_minor():
     return Chord('A', 'Minor', positions)
 
 
-def a_minor_seven():
+def a_minor_seven() -> Chord:
     positions = [
         Position(guitar_string=5, is_highlighted=True),
         Position(guitar_string=4, fret=2, finger=2),
@@ -146,7 +146,7 @@ def a_minor_seven():
     return Chord('A', 'Minor 7', positions)
 
 
-def b_diminished():
+def b_diminished() -> Chord:
     positions = [
         Position(guitar_string=4),
         Position(guitar_string=3, fret=4, finger=4, is_highlighted=True),
@@ -157,7 +157,7 @@ def b_diminished():
     return Chord('B', 'Diminished', positions)
 
 
-def b_diminished_seven_flat_five():
+def b_diminished_seven_flat_five() -> Chord:
     positions = [
         Position(guitar_string=4),
         Position(guitar_string=3, fret=2, finger=2, is_highlighted=True),
