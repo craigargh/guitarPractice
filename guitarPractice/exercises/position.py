@@ -4,3 +4,6 @@ class Position:
         self.guitar_string = guitar_string
         self.finger = finger
         self.is_highlighted = is_highlighted
+
+# TODO: Add label/annotation to Position to output shape name for chord changes when printing a sequence
+# TODO: Add duration for rhythm
