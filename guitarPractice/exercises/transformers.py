@@ -1,7 +1,7 @@
 from itertools import cycle
 
 
-def ascending_sequence(shape: iter, sequence_length: int = None):
+def ascending_transformer(shape: iter, sequence_length: int = None):
     sequence_length_is_set = sequence_length is not None and sequence_length > 0
 
     if sequence_length_is_set and sequence_length <= len(shape):
@@ -9,6 +9,7 @@ def ascending_sequence(shape: iter, sequence_length: int = None):
 
     elif sequence_length_is_set and sequence_length > len(shape):
         sequence = lengthen_shape(shape, sequence_length)
+
     else:
         sequence = shape[:]
 
