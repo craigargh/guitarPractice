@@ -22,3 +22,6 @@ class Chord:
     @property
     def name(self) -> str:
         return '{} {}'.format(self.root_note, self.voicing)
+
+# TODO: Add property that converts full name into abbreviation e.g. C Major 7 to Cmaj7
+# TODO: Add constants for voicings e.g. MAJOR for 'Major', MAJOR_7 for 'Major 7'

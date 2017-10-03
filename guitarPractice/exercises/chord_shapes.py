@@ -2,8 +2,6 @@ from guitarPractice.exercises.chord import Chord
 from guitarPractice.exercises.position import Position
 
 
-# TODO: Change chord names to short names e.g. Major 7 to maj7
-
 def c_major() -> Chord:
     positions = [
         Position(guitar_string=5, fret=3, finger=3, is_highlighted=True),
