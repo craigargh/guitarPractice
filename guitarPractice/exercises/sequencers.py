@@ -24,3 +24,5 @@ def repeat_first_shape_sequencer(*shapes) -> List[Position]:
         sequence.extend(shape)
 
     return sequence
+
+# TODO: Add label/annotation to first position when chord is changed
