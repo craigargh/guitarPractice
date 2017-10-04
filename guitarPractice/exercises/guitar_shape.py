@@ -25,4 +25,3 @@ class GuitarShape:
 
 # TODO: Add property that converts full name into abbreviation e.g. C Major 7 to Cmaj7
 # TODO: Add constants for voicings e.g. MAJOR for 'Major', MAJOR_7 for 'Major 7'
-# TODO: Add is_chord and is_scale method (calculate by checking each string on appears once in all positions)
