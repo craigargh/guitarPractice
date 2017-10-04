@@ -1,10 +1,10 @@
 from itertools import cycle
 from typing import List
 
-from guitarPractice.exercises.chord import Chord
+from guitarPractice.exercises.guitar_shape import GuitarShape
 
 
-def ascending_transformer(shape: List[Chord], sequence_length: int = None):
+def ascending_transformer(shape: List[GuitarShape], sequence_length: int = None):
     sequence_length_is_set = sequence_length is not None and sequence_length > 0
 
     if sequence_length_is_set and sequence_length <= len(shape):

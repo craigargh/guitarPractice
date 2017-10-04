@@ -1,10 +1,10 @@
 from typing import List
 
-from guitarPractice.exercises.chord import Chord
+from guitarPractice.exercises.guitar_shape import GuitarShape
 from guitarPractice.exercises.position import Position
 
 
-def in_order_sequencer(*shapes: List[Chord]) -> List[Position]:
+def in_order_sequencer(*shapes: List[GuitarShape]) -> List[Position]:
     sequence = [
         position
         for shape in shapes
