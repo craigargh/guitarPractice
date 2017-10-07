@@ -7,6 +7,7 @@ class ExerciseBuilder:
     def __init__(self):
         self.shapes = None
         self.rhythm = None
+        self.sequencer = None
 
         self.transformers = []
 
@@ -27,6 +28,13 @@ class ExerciseBuilder:
             raise AttributeError("Can only set the rhythm once")
 
         self.rhythm = rhythm
+        return self
+
+    def set_sequencer(self, sequencer):
+        if self.sequencer is not None:
+            raise AttributeError("Can only set sequencer once")
+
+        self.sequencer = sequencer
         return self
 
     def build(self):

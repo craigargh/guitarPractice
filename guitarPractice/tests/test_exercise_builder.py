@@ -50,3 +50,15 @@ class TestExerciseBuilder(TestCase):
             ExerciseBuilder() \
                 .set_rhythm("rhythm") \
                 .set_rhythm("another")
+
+    def test_can_set_sequencer(self):
+        builder = ExerciseBuilder() \
+            .set_sequencer("sequencer")
+
+        self.assertEqual(builder.sequencer, "sequencer")
+
+    def test_can_only_set_sequencer_once(self):
+        with self.assertRaises(AttributeError):
+            ExerciseBuilder() \
+                .set_sequencer("sequencer") \
+                .set_sequencer("again") \
