@@ -56,7 +56,7 @@ class ExerciseBuilder:
     @staticmethod
     def _apply_sequencer(shapes, sequencer):
         if sequencer:
-            return list(sequencer(shapes))
+            return sequencer(shapes)
 
         return shapes
 
