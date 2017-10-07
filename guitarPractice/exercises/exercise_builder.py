@@ -1,3 +1,5 @@
+from itertools import chain
+
 from guitarPractice.exercises.exercise import Exercise
 
 
@@ -13,4 +15,11 @@ class ExerciseBuilder:
         return self
 
     def build(self):
-        return Exercise(shapes=self.shapes, sequence=[])
+        positions = [
+            shape.positions
+            for shape in self.shapes
+        ]
+
+        sequence = chain.from_iterable(positions)
+
+        return Exercise(shapes=self.shapes, sequence=list(sequence))
