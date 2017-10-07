@@ -38,3 +38,15 @@ class TestExerciseBuilder(TestCase):
             .transform("d")
 
         self.assertEqual(builder.transformers, ["a", "b", "c", "d"])
+
+    def test_set_rhythm_for_builder(self):
+        builder = ExerciseBuilder() \
+            .set_rhythm("rhythm")
+
+        self.assertEqual(builder.rhythm, "rhythm")
+
+    def test_can_only_set_rhythm_once(self):
+        with self.assertRaises(AttributeError):
+            ExerciseBuilder() \
+                .set_rhythm("rhythm") \
+                .set_rhythm("another")

@@ -6,11 +6,13 @@ from guitarPractice.exercises.exercise import Exercise
 class ExerciseBuilder:
     def __init__(self):
         self.shapes = None
+        self.rhythm = None
+
         self.transformers = []
 
     def set_shapes(self, shapes):
         if self.shapes is not None:
-            raise AttributeError("You can only set the exercise shapes once")
+            raise AttributeError("Can only set the exercise shapes once")
 
         self.shapes = shapes
         return self
@@ -18,6 +20,13 @@ class ExerciseBuilder:
     def transform(self, transformer):
         self.transformers.append(transformer)
 
+        return self
+
+    def set_rhythm(self, rhythm):
+        if self.rhythm is not None:
+            raise AttributeError("Can only set the rhythm once")
+
+        self.rhythm = rhythm
         return self
 
     def build(self):
