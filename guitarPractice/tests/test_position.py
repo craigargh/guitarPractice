@@ -38,3 +38,13 @@ class PositionTest(TestCase):
         position = Position(guitar_string=1)
 
         self.assertEqual(0, position.finger)
+
+    def test_duration_is_set(self):
+        position = Position(guitar_string=1, duration=0.5)
+
+        self.assertEqual(position.duration, 0.5)
+
+    def test_default_duration_is_set(self):
+        position = Position(guitar_string=1)
+
+        self.assertEqual(position.duration, 1)

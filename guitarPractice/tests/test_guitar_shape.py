@@ -56,4 +56,3 @@ class GuitarShapeTest(TestCase):
         c_major.transform(reversed)
 
         self.assertEqual(c_major.positions, [1, 2, 3])
-
