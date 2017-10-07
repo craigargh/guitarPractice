@@ -1,3 +1,5 @@
+import operator
+from functools import partial
 from unittest import TestCase
 
 from guitarPractice.exercises.exercise import Exercise
@@ -38,5 +40,29 @@ class TestExerciseBuilderBuild(TestCase):
             .build()
 
         expected_sequence = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+        self.assertEqual(exercise.sequence, expected_sequence)
+
+    def test_transform_is_applied_to_each_shape(self):
+        exercise = ExerciseBuilder() \
+            .set_shapes(self.shapes) \
+            .transform(reversed) \
+            .build()
+
+        expected_sequence = [4, 3, 2, 1, 8, 7, 6, 5, 12, 11, 10, 9]
+
+        self.assertEqual(exercise.sequence, expected_sequence)
+
+    def test_multiple_transforms_are_applied_to_each_shape(self):
+        add_one = partial(operator.add, 1)
+        add_one_to_each = partial(map, add_one)
+
+        exercise = ExerciseBuilder() \
+            .set_shapes(self.shapes) \
+            .transform(reversed) \
+            .transform(add_one_to_each) \
+            .build()
+
+        expected_sequence = [5, 4, 3, 2, 9, 8, 7, 6, 13, 12, 11, 10]
 
         self.assertEqual(exercise.sequence, expected_sequence)

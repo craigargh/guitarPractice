@@ -38,19 +38,38 @@ class ExerciseBuilder:
         return self
 
     def build(self):
-        sequence = list(self.combine_sequences())
-
-        return Exercise(shapes=self.shapes, sequence=sequence)
-
-    def combine_sequences(self):
         try:
-            positions = [
-                shape.positions
-                for shape in self.shapes
-            ]
+            shapes = self.shapes[:]
 
         except TypeError:
             raise AttributeError("shapes must be set with set_shapes()")
 
-        return chain.from_iterable(positions)
+        shapes = self._apply_transformations(shapes, self.transformers)
 
+        sequence = list(self._combine_sequences(shapes))
+
+        return Exercise(shapes=self.shapes, sequence=sequence)
+
+    @staticmethod
+    def _apply_transformations(shapes, transformers):
+        if transformers:
+            updated_shapes = []
+
+            for shape in shapes:
+                for transformer in transformers:
+                    shape = shape.transform(transformer)
+
+                updated_shapes.append(shape)
+
+            return updated_shapes
+        else:
+            return shapes
+
+    @staticmethod
+    def _combine_sequences(shapes):
+        positions = [
+            shape.positions
+            for shape in shapes
+        ]
+
+        return chain.from_iterable(positions)
