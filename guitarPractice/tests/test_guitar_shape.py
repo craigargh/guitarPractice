@@ -42,3 +42,18 @@ class GuitarShapeTest(TestCase):
         self.assertEqual(1, results[0])
         self.assertEqual(2, results[1])
         self.assertEqual(3, results[2])
+
+    def test_apply_transformation_changes_positions(self):
+        c_major = GuitarShape('C', 'major', [1, 2, 3])
+
+        transformed_shape = c_major.transform(reversed)
+
+        self.assertEqual(transformed_shape.positions, [3, 2, 1])
+
+    def test_apply_transformation_does_not_modify_original_shape(self):
+        c_major = GuitarShape('C', 'major', [1, 2, 3])
+
+        c_major.transform(reversed)
+
+        self.assertEqual(c_major.positions, [1, 2, 3])
+

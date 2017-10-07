@@ -1,3 +1,4 @@
+import copy
 from typing import List
 
 from guitarPractice.exercises.position import Position
@@ -22,6 +23,12 @@ class GuitarShape:
     @property
     def name(self) -> str:
         return '{} {}'.format(self.root_note, self.voicing)
+
+    def transform(self, transformer):
+        transformed_shape = copy.deepcopy(self)
+        transformed_shape.positions = list(transformer(self.positions))
+
+        return transformed_shape
 
 # TODO: Add property that converts full name into abbreviation e.g. C Major 7 to Cmaj7
 # TODO: Add constants for voicings e.g. MAJOR for 'Major', MAJOR_7 for 'Major 7'
