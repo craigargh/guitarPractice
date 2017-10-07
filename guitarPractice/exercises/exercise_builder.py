@@ -15,11 +15,15 @@ class ExerciseBuilder:
         return self
 
     def build(self):
+        sequence = list(self.combine_sequences())
+
+        return Exercise(shapes=self.shapes, sequence=sequence)
+
+    def combine_sequences(self):
         positions = [
             shape.positions
             for shape in self.shapes
         ]
 
-        sequence = chain.from_iterable(positions)
+        return chain.from_iterable(positions)
 
-        return Exercise(shapes=self.shapes, sequence=list(sequence))
