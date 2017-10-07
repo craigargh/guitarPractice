@@ -38,17 +38,19 @@ class ExerciseBuilder:
         return self
 
     def build(self):
-        try:
-            shapes = self.shapes[:]
-
-        except TypeError:
-            raise AttributeError("shapes must be set with set_shapes()")
-
+        shapes = self._try_get_shapes()
         shapes = self._apply_transformations(shapes, self.transformers)
 
         sequence = list(self._combine_sequences(shapes))
 
         return Exercise(shapes=self.shapes, sequence=sequence)
+
+    def _try_get_shapes(self):
+        try:
+            return self.shapes[:]
+
+        except TypeError:
+            raise AttributeError("shapes must be set with set_shapes()")
 
     @staticmethod
     def _apply_transformations(shapes, transformers):
