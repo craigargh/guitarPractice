@@ -39,6 +39,7 @@ class ExerciseBuilder:
 
     def build(self):
         shapes = self._try_get_shapes()
+        shapes = self._apply_sequencer(shapes, self.sequencer)
         shapes = self._apply_transformations(shapes, self.transformers)
 
         sequence = list(self._combine_sequences(shapes))
@@ -51,6 +52,13 @@ class ExerciseBuilder:
 
         except TypeError:
             raise AttributeError("shapes must be set with set_shapes()")
+
+    @staticmethod
+    def _apply_sequencer(shapes, sequencer):
+        if sequencer:
+            return list(sequencer(shapes))
+
+        return shapes
 
     @staticmethod
     def _apply_transformations(shapes, transformers):
