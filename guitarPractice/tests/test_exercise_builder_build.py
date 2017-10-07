@@ -13,15 +13,6 @@ class TestExerciseBuilderBuild(TestCase):
             GuitarShape(positions=[9, 10, 11, 12], root_note='C', voicing='m'),
         ]
 
-    def test_build_combines_shapes_and_sets_sequence(self):
-        exercise = ExerciseBuilder() \
-            .set_shapes(self.shapes) \
-            .build()
-
-        expected_sequence = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-
-        self.assertEqual(exercise.sequence, expected_sequence)
-
     def test_build_returns_an_exercise(self):
         exercise = ExerciseBuilder() \
             .set_shapes(self.shapes) \
@@ -35,3 +26,17 @@ class TestExerciseBuilderBuild(TestCase):
             .build()
 
         self.assertEqual(exercise.shapes, self.shapes)
+
+    def test_shapes_are_required_before_build(self):
+        with self.assertRaises(AttributeError):
+            ExerciseBuilder() \
+                .build()
+
+    def test_build_combines_shapes_and_sets_sequence(self):
+        exercise = ExerciseBuilder() \
+            .set_shapes(self.shapes) \
+            .build()
+
+        expected_sequence = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+        self.assertEqual(exercise.sequence, expected_sequence)

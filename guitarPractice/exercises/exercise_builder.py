@@ -43,10 +43,14 @@ class ExerciseBuilder:
         return Exercise(shapes=self.shapes, sequence=sequence)
 
     def combine_sequences(self):
-        positions = [
-            shape.positions
-            for shape in self.shapes
-        ]
+        try:
+            positions = [
+                shape.positions
+                for shape in self.shapes
+            ]
+
+        except TypeError:
+            raise AttributeError("shapes must be set with set_shapes()")
 
         return chain.from_iterable(positions)
 
