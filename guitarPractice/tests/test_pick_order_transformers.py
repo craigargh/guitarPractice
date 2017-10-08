@@ -1,4 +1,5 @@
 from unittest import TestCase
+
 from guitarPractice.exercise_builder import pick_order_transformers
 
 
@@ -19,7 +20,7 @@ class TestAscendingTransformer(TestCase):
         note_sequence = pick_order_transformers.ascending_transformer([1, 2, 3, 4, 5], sequence_length=8)
 
         self.assertEqual(len(note_sequence), 8)
-        self.assertEqual(note_sequence, [1, 2, 3, 4, 5, 3, 4, 5])
+        self.assertEqual([1, 2, 3, 4, 5, 3, 4, 5], note_sequence)
 
     def test_ascending_transformer_will_repeat_notes_if_length_is_greater_than_double_shape_length(self):
         note_sequence = pick_order_transformers.ascending_transformer([1, 2, 3, 4, 5], sequence_length=13)
@@ -27,8 +28,30 @@ class TestAscendingTransformer(TestCase):
         self.assertEqual(len(note_sequence), 13)
         self.assertEqual(note_sequence, [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 3, 4, 5])
 
-    def test_ascending_transformer_will_repeat_notes_if_length_is_greater_than_double_shape_length(self):
+    def test_ascending_transformer_will_repeat_notes_when_length_is_multiple_of_shape_length(self):
         note_sequence = pick_order_transformers.ascending_transformer([1, 2, 3, 4], sequence_length=12)
 
         self.assertEqual(len(note_sequence), 12)
         self.assertEqual(note_sequence, [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4])
+
+
+class TestAscendingAndDescendingTransformer(TestCase):
+    def test_returns_notes_in_ascending_and_descending_order(self):
+        note_sequence = pick_order_transformers.ascending_and_descending_transformer([1, 2, 3, 4])
+
+        self.assertEqual(note_sequence, [1, 2, 3, 4, 3, 2])
+
+    def test_can_shorten_sequence(self):
+        note_sequence = pick_order_transformers.ascending_and_descending_transformer([1, 2, 3, 4], sequence_length=4)
+
+        self.assertEqual(note_sequence, [1, 2, 4, 3])
+
+    def test_can_lengthen_sequence(self):
+        note_sequence = pick_order_transformers.ascending_and_descending_transformer([1, 2, 3, 4], sequence_length=8)
+
+        self.assertEqual(note_sequence, [1, 2, 3, 4, 4, 3, 2, 1])
+
+    def test_can_lengthen_sequence_beyond_multiple_of_length(self):
+        note_sequence = pick_order_transformers.ascending_and_descending_transformer([1, 2, 3, 4], sequence_length=10)
+
+        self.assertEqual(note_sequence, [1, 2, 3, 4, 4, 3, 2, 1, 2, 1])
