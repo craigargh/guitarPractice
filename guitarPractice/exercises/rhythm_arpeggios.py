@@ -26,7 +26,7 @@ def get_chords(quantity):
 
 def get_level_one_transformer():
     all_transformers = [
-        ascending_transformer
+        ascending_transformer,
         ascending_and_descending_transformer,
     ]
 
