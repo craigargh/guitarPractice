@@ -70,3 +70,27 @@ class PositionTest(TestCase):
         position = Position(guitar_string=1, order=12)
 
         self.assertEqual(position.order, 12)
+
+    def test_positions_with_same_string_fret_and_finger_are_equal(self):
+        position_1 = Position(guitar_string=1, fret=2, finger=3)
+        position_2 = Position(guitar_string=1, fret=2, finger=3)
+
+        self.assertEqual(position_1, position_2)
+
+    def test_positions_with_different_string_are_not_equal(self):
+        position_1 = Position(guitar_string=1, fret=2, finger=3)
+        position_2 = Position(guitar_string=2, fret=2, finger=3)
+
+        self.assertNotEqual(position_1, position_2)
+
+    def test_positions_with_different_frets_are_not_equal(self):
+        position_1 = Position(guitar_string=1, fret=2, finger=3)
+        position_2 = Position(guitar_string=1, fret=6, finger=3)
+
+        self.assertNotEqual(position_1, position_2)
+
+    def test_positions_with_different_fingers_are_not_equal(self):
+        position_1 = Position(guitar_string=1, fret=2, finger=3)
+        position_2 = Position(guitar_string=1, fret=2, finger=1)
+
+        self.assertNotEqual(position_1, position_2)

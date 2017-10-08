@@ -14,4 +14,11 @@ class Position:
     def __repr__(self):
         return f"Position(guitar_string={self.guitar_string}, fret={self.fret}, finger={self.finger})"
 
+    def __eq__(self, other):
+        same_string = self.guitar_string == other.guitar_string
+        same_fret = self.fret == other.fret
+        same_finger = self.finger == other.finger
+
+        return same_string and same_fret and same_finger
+
 # TODO: Add label/annotation to Position to output shape name for chord changes when printing a sequence
