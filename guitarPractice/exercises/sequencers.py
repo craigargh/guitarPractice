@@ -1,28 +1,20 @@
 from typing import List
 
 from guitarPractice.exercises.guitar_shape import GuitarShape
-from guitarPractice.exercises.position import Position
 
 
-def in_order_sequencer(*shapes: List[GuitarShape]) -> List[Position]:
-    sequence = [
-        position
-        for shape in shapes
-        for position in shape
-    ]
-    return sequence
+def in_order_sequencer(*shapes: List[GuitarShape]) -> List[GuitarShape]:
+    return list(shapes)
 
 
-def repeat_first_shape_sequencer(*shapes) -> List[Position]:
+def repeat_first_shape_sequencer(*shapes) -> List[GuitarShape]:
     shapes_list = list(shapes)
     first_shape = shapes_list.pop(0)
 
     sequence = []
 
     for shape in shapes_list:
-        sequence.extend(first_shape)
-        sequence.extend(shape)
+        sequence.append(first_shape)
+        sequence.append(shape)
 
     return sequence
-
-# TODO: Add label/annotation to first position when chord is changed

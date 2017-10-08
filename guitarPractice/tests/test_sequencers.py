@@ -11,9 +11,9 @@ class TestSequencers(TestCase):
     def test_in_order_sequencer_combines_shape_notes_in_order(self):
         note_sequence = sequencers.in_order_sequencer(self.shape1, self.shape2, self.shape3)
 
-        self.assertEqual(note_sequence, ['a', 'b', 'c', 'd', 'e', 'f'])
+        self.assertEqual(note_sequence, [['a', 'b'], ['c', 'd'], ['e', 'f']])
 
     def test_repeat_first_shape_sequencer_alternates_with_first_shape(self):
         note_sequence = sequencers.repeat_first_shape_sequencer(self.shape1, self.shape2, self.shape3)
 
-        self.assertEqual(note_sequence, ['a', 'b', 'c', 'd', 'a', 'b', 'e', 'f'])
+        self.assertEqual(note_sequence, [['a', 'b'], ['c', 'd'], ['a', 'b'], ['e', 'f']])
