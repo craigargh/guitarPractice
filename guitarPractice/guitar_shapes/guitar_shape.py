@@ -5,9 +5,9 @@ from guitarPractice.guitar_shapes.position import Position
 
 
 class GuitarShape:
-    def __init__(self, root_note: str, voicing: str, positions: List[Position]):
+    def __init__(self, root_note: str, tonality: str, positions: List[Position]):
         self.root_note = root_note
-        self.voicing = voicing
+        self.tonality = tonality
         self.positions = positions
 
     def __len__(self) -> int:
@@ -20,9 +20,15 @@ class GuitarShape:
         for position in self.positions:
             yield position
 
+    def __str__(self) -> str:
+        return f"{self.root_note} {self.tonality}"
+
+    def __repr__(self):
+        return f"GuitarShape('{self.root_note}', '{self.tonality}', {self.positions})"
+
     @property
     def name(self) -> str:
-        return '{} {}'.format(self.root_note, self.voicing)
+        return '{} {}'.format(self.root_note, self.tonality)
 
     def transform(self, transformer):
         transformed_shape = copy.deepcopy(self)

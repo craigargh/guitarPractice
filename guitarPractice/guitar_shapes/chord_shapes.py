@@ -1,4 +1,4 @@
-from guitarPractice.exercise_builder.guitar_shape import GuitarShape
+from guitarPractice.guitar_shapes.guitar_shape import GuitarShape
 
 from guitarPractice.guitar_shapes.position import Position
 

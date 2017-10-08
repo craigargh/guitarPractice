@@ -10,9 +10,9 @@ from guitarPractice.guitar_shapes.guitar_shape import GuitarShape
 class TestExerciseBuilderBuild(TestCase):
     def setUp(self):
         self.shapes = [
-            GuitarShape(positions=[1, 2, 3, 4], root_note='A', voicing='m'),
-            GuitarShape(positions=[5, 6, 7, 8], root_note='B', voicing='m'),
-            GuitarShape(positions=[9, 10, 11, 12], root_note='C', voicing='m'),
+            GuitarShape(positions=[1, 2, 3, 4], root_note='A', tonality='m'),
+            GuitarShape(positions=[5, 6, 7, 8], root_note='B', tonality='m'),
+            GuitarShape(positions=[9, 10, 11, 12], root_note='C', tonality='m'),
         ]
 
     def test_build_returns_an_exercise(self):

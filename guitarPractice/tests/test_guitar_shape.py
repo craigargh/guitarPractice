@@ -9,12 +9,12 @@ class GuitarShapeTest(TestCase):
 
         self.assertEqual('C', c_major.root_note)
 
-    def test_voicing_is_set(self):
+    def test_tonality_is_set(self):
         c_major = GuitarShape('C', 'major', [])
 
-        self.assertEqual('major', c_major.voicing)
+        self.assertEqual('major', c_major.tonality)
 
-    def test_name_is_built_from_root_note_and_voicing(self):
+    def test_name_is_built_from_root_note_and_tonality(self):
         c_major = GuitarShape('C', 'major', [])
 
         self.assertEqual('C major', c_major.name)
@@ -56,3 +56,13 @@ class GuitarShapeTest(TestCase):
         c_major.transform(reversed)
 
         self.assertEqual(c_major.positions, [1, 2, 3])
+
+    def test_str_returns_chord_name(self):
+        c_major = GuitarShape('C', 'major', [1, 2, 3])
+
+        self.assertEqual('C major', str(c_major))
+
+    def test_repr_returns_description_of_chord(self):
+        c_major = GuitarShape('C', 'major', [1, 2, 3])
+
+        self.assertEqual("GuitarShape('C', 'major', [1, 2, 3])", repr(c_major))
