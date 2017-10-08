@@ -24,10 +24,11 @@ def get_chords(quantity):
 
 
 def get_level_one_transformer():
-    notes_per_arpeggio = choice([4, 6, 8])
-
     all_transformers = [
-        partial(ascending_transformer, sequence_length=notes_per_arpeggio)
+        ascending_transformer,
     ]
 
-    return choice(all_transformers)
+    transformer = choice(all_transformers)
+
+    notes_per_arpeggio = choice([4, 6, 8])
+    return partial(transformer, sequence_length=notes_per_arpeggio)
