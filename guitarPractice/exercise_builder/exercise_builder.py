@@ -81,12 +81,17 @@ class ExerciseBuilder:
     def _set_order_of_positions(shapes):
         shapes = list(deepcopy(shapes))
 
+        next_index = 0
         offset = 0
         for shape in shapes:
-            for index, position in enumerate(shape.positions):
-                position.order = index + offset
+            for position in shape.positions:
+                if position.order is None:
+                    position.order = next_index
+                else:
+                    position.order += offset
+                next_index = position.order + 1
 
-            offset = len(shape.positions)
+            offset = next_index
         return shapes
 
     @staticmethod
