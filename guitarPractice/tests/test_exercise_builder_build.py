@@ -127,3 +127,17 @@ class TestExerciseBuilderBuild(TestCase):
         ]
 
         self.assertEqual(exercise.sequence, expected_sequence)
+
+    def test_combiner_sets_order_of_positions(self):
+        exercise = ExerciseBuilder() \
+            .set_shapes(self.shapes) \
+            .build()
+
+        self.assertEqual(exercise.sequence[0].order, 0)
+        self.assertEqual(exercise.sequence[1].order, 1)
+        self.assertEqual(exercise.sequence[2].order, 2)
+        self.assertEqual(exercise.sequence[3].order, 3)
+        self.assertEqual(exercise.sequence[4].order, 4)
+        self.assertEqual(exercise.sequence[5].order, 5)
+        self.assertEqual(exercise.sequence[6].order, 6)
+        self.assertEqual(exercise.sequence[7].order, 7)

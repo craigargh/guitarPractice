@@ -1,3 +1,4 @@
+from copy import deepcopy
 from itertools import chain
 
 from guitarPractice.exercise_builder.exercise import Exercise
@@ -41,6 +42,7 @@ class ExerciseBuilder:
         shapes = self._try_get_shapes()
         shapes = self._apply_sequencer(shapes, self.sequencer)
         shapes = self._apply_transformations(shapes, self.transformers)
+        shapes = self._set_order_of_positions(shapes)
 
         sequence = list(self._combine_sequences(shapes))
 
@@ -48,7 +50,7 @@ class ExerciseBuilder:
 
     def _try_get_shapes(self):
         try:
-            return self.shapes[:]
+            return list(self.shapes[:])
 
         except TypeError:
             raise AttributeError("shapes must be set with set_shapes()")
@@ -74,6 +76,18 @@ class ExerciseBuilder:
             return updated_shapes
         else:
             return shapes
+
+    @staticmethod
+    def _set_order_of_positions(shapes):
+        shapes = list(deepcopy(shapes))
+
+        offset = 0
+        for shape in shapes:
+            for index, position in enumerate(shape.positions):
+                position.order = index + offset
+
+            offset = len(shape.positions)
+        return shapes
 
     @staticmethod
     def _combine_sequences(shapes):
