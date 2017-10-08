@@ -15,7 +15,7 @@ def level_one():
         .transform(transformer) \
         .build()
 
-    print(exercise)
+    return exercise
 
 
 def get_chords(quantity):
@@ -24,15 +24,10 @@ def get_chords(quantity):
 
 
 def get_level_one_transformer():
-    notes_per_arpeggio = choice([4, 6, 8, 12])
-
-    print(notes_per_arpeggio)
+    notes_per_arpeggio = choice([4, 6, 8])
 
     all_transformers = [
         partial(ascending_transformer, sequence_length=notes_per_arpeggio)
     ]
 
     return choice(all_transformers)
-
-
-level_one()
