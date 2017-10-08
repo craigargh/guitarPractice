@@ -46,16 +46,17 @@ def lengthen_sequence(positions, sequence_length):
     positions_cycle = cycle(positions)
 
     partial_repeats_length = sequence_length % len(positions)
-    if partial_repeats_length != 0:
-        partial_repeats_sequence = deepcopy(positions[-partial_repeats_length:])
-    else:
-        partial_repeats_sequence = []
-
     full_repeats_length = sequence_length - partial_repeats_length
 
-    full_repeats_sequence = []
+    full_sequence_repeats = []
 
     for _ in range(full_repeats_length):
-        full_repeats_sequence.append(deepcopy(next(positions_cycle)))
+        looped_position = deepcopy(next(positions_cycle))
+        full_sequence_repeats.append(looped_position)
 
-    return full_repeats_sequence + partial_repeats_sequence
+    if partial_repeats_length != 0:
+        partial_sequence_repeats = deepcopy(positions[-partial_repeats_length:])
+    else:
+        partial_sequence_repeats = []
+
+    return full_sequence_repeats + partial_sequence_repeats
