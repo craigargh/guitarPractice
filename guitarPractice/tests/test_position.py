@@ -60,3 +60,13 @@ class PositionTest(TestCase):
         expected_string = "Position(guitar_string=1, fret=3, finger=2)"
 
         self.assertEqual(expected_string, repr(position))
+
+    def test_order_defaults_to_none(self):
+        position = Position(guitar_string=6)
+
+        self.assertEqual(position.order, None)
+
+    def test_can_set_position_order(self):
+        position = Position(guitar_string=1, order=12)
+
+        self.assertEqual(position.order, 12)
