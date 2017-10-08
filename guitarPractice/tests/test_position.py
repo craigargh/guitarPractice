@@ -48,3 +48,15 @@ class PositionTest(TestCase):
         position = Position(guitar_string=1)
 
         self.assertEqual(position.duration, 1)
+
+    def test_str_returns_a_description_of_the_position(self):
+        position = Position(guitar_string=1, finger=2, fret=3)
+
+        self.assertEqual("(string: 1, fret: 3, finger: 2)", str(position))
+
+    def test_repr_returns_description_of_the_position(self):
+        position = Position(guitar_string=1, finger=2, fret=3)
+
+        expected_string = "Position(guitar_string=1, fret=3, finger=2)"
+
+        self.assertEqual(expected_string, repr(position))

@@ -7,4 +7,10 @@ class Position:
         self.is_highlighted = is_highlighted
         self.duration = duration
 
+    def __str__(self):
+        return f"(string: {self.guitar_string}, fret: {self.fret}, finger: {self.finger})"
+
+    def __repr__(self):
+        return f"Position(guitar_string={self.guitar_string}, fret={self.fret}, finger={self.finger})"
+
 # TODO: Add label/annotation to Position to output shape name for chord changes when printing a sequence
