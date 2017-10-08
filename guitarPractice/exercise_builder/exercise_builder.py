@@ -81,17 +81,20 @@ class ExerciseBuilder:
     def _set_order_of_positions(shapes):
         shapes = list(deepcopy(shapes))
 
-        next_index = 0
-        offset = 0
+        index = 0
         for shape in shapes:
-            for position in shape.positions:
-                if position.order is None:
-                    position.order = next_index
-                else:
-                    position.order += offset
-                next_index = position.order + 1
+            positions = deepcopy(shape.positions)
 
-            offset = next_index
+            if shape.is_picked:
+                for position in positions:
+                    position.order = index
+                    index += 1
+            else:
+                for position in positions:
+                    position.order = index
+                index += 1
+
+            shape.positions = positions
         return shapes
 
     @staticmethod

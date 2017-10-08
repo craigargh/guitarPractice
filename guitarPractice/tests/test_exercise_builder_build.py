@@ -142,30 +142,31 @@ class TestExerciseBuilderBuild(TestCase):
         self.assertEqual(exercise.sequence[6].order, 6)
         self.assertEqual(exercise.sequence[7].order, 7)
 
-    def test_combiner_offsets_existing_order_of_positions(self):
-        a_positions = [
-            Position(guitar_string=1, order=0),
-            Position(guitar_string=2, order=0),
+    def test_combiner_puts_strummed_shapes_in_single_position(self):
+        positions = [
+            Position(guitar_string=1),
+            Position(guitar_string=2),
             Position(guitar_string=3),
-        ]
-        b_positions = [
-            Position(guitar_string=4, order=0),
-            Position(guitar_string=5),
-            Position(guitar_string=6),
         ]
 
         shapes = [
-            GuitarShape(positions=a_positions, root_note='A', tonality='m'),
-            GuitarShape(positions=b_positions, root_note='B', tonality='m'),
+            GuitarShape(positions=positions, root_note='A', tonality='m'),
+            GuitarShape(positions=positions, root_note='B', tonality='m'),
+            GuitarShape(positions=positions, root_note='C', tonality='m'),
         ]
+
+        shapes[1].is_strummed = True
 
         exercise = ExerciseBuilder() \
             .set_shapes(shapes) \
             .build()
 
         self.assertEqual(exercise.sequence[0].order, 0)
-        self.assertEqual(exercise.sequence[1].order, 0)
-        self.assertEqual(exercise.sequence[2].order, 1)
-        self.assertEqual(exercise.sequence[3].order, 2)
+        self.assertEqual(exercise.sequence[1].order, 1)
+        self.assertEqual(exercise.sequence[2].order, 2)
+        self.assertEqual(exercise.sequence[3].order, 3)
         self.assertEqual(exercise.sequence[4].order, 3)
-        self.assertEqual(exercise.sequence[5].order, 4)
+        self.assertEqual(exercise.sequence[5].order, 3)
+        self.assertEqual(exercise.sequence[6].order, 4)
+        self.assertEqual(exercise.sequence[7].order, 5)
+        self.assertEqual(exercise.sequence[8].order, 6)

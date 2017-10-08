@@ -67,7 +67,9 @@ class PositionTest(TestCase):
         self.assertEqual(position.order, None)
 
     def test_can_set_position_order(self):
-        position = Position(guitar_string=1, order=12)
+        position = Position(guitar_string=1)
+
+        position.order = 12
 
         self.assertEqual(position.order, 12)
 
