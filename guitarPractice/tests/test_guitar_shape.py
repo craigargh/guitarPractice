@@ -66,3 +66,29 @@ class GuitarShapeTest(TestCase):
         c_major = GuitarShape('C', 'major', [1, 2, 3])
 
         self.assertEqual("GuitarShape('C', 'major', [1, 2, 3])", repr(c_major))
+
+    def test_is_picked_defaults_to_true(self):
+        c_major = GuitarShape('C', 'major', [1, 2, 3])
+
+        self.assertTrue(c_major.is_picked)
+
+    def test_is_strummed_defaults_to_false(self):
+        c_major = GuitarShape('C', 'major', [1, 2, 3])
+
+        self.assertFalse(c_major.is_strummed)
+
+    def test_can_set_picked_to_false(self):
+        c_major = GuitarShape('C', 'major', [1, 2, 3])
+
+        c_major.is_picked = False
+
+        self.assertFalse(c_major.is_picked)
+        self.assertTrue(c_major.is_strummed)
+
+    def test_can_set_is_strummed_to_true(self):
+        c_major = GuitarShape('C', 'major', [1, 2, 3])
+
+        c_major.is_strummed = True
+
+        self.assertFalse(c_major.is_picked)
+        self.assertTrue(c_major.is_strummed)
