@@ -1,5 +1,5 @@
 from unittest import TestCase
-from guitarPractice.exercises import pick_order_transformers
+from guitarPractice.exercise_builder import pick_order_transformers
 
 
 class TestAscendingTransformer(TestCase):

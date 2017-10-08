@@ -1,7 +1,7 @@
 from typing import List
 
-from guitarPractice.exercises import chord_shapes
-from guitarPractice.exercises.guitar_shape import GuitarShape
+from guitarPractice.guitar_shapes import chord_shapes
+from guitarPractice.guitar_shapes.guitar_shape import GuitarShape
 
 """
 major scale nine chords

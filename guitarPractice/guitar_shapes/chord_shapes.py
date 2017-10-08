@@ -1,5 +1,6 @@
-from guitarPractice.exercises.guitar_shape import GuitarShape
-from guitarPractice.exercises.position import Position
+from guitarPractice.exercise_builder.guitar_shape import GuitarShape
+
+from guitarPractice.guitar_shapes.position import Position
 
 
 def c_major() -> GuitarShape:

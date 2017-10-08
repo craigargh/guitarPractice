@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from guitarPractice.exercises.exercise_builder import ExerciseBuilder
-from guitarPractice.exercises.guitar_shape import GuitarShape
+from guitarPractice.exercise_builder.exercise_builder import ExerciseBuilder
+from guitarPractice.guitar_shapes.guitar_shape import GuitarShape
 
 
 class TestExerciseBuilder(TestCase):

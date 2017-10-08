@@ -1,5 +1,5 @@
 from unittest import TestCase
-from guitarPractice.exercises import sequencers
+from guitarPractice.exercise_builder import sequencers
 
 
 class TestSequencers(TestCase):

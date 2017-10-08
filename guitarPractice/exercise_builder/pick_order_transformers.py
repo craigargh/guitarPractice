@@ -1,7 +1,7 @@
 from itertools import cycle
 from typing import List
 
-from guitarPractice.exercises.guitar_shape import GuitarShape
+from guitarPractice.guitar_shapes.guitar_shape import GuitarShape
 
 
 def ascending_transformer(shape: List[GuitarShape], sequence_length: int = None):

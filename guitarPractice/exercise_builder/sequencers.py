@@ -1,6 +1,6 @@
 from typing import List
 
-from guitarPractice.exercises.guitar_shape import GuitarShape
+from guitarPractice.guitar_shapes.guitar_shape import GuitarShape
 
 
 def in_order_sequencer(*shapes: List[GuitarShape]) -> List[GuitarShape]:

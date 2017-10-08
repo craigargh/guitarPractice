@@ -1,7 +1,7 @@
 import copy
 from typing import List
 
-from guitarPractice.exercises.position import Position
+from guitarPractice.guitar_shapes.position import Position
 
 
 class GuitarShape:

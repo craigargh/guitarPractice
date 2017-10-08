@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from guitarPractice.exercises.exercise import Exercise
+from guitarPractice.exercise_builder.exercise import Exercise
 
 
 class TestExercise(TestCase):

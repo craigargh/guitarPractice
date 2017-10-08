@@ -1,6 +1,6 @@
 from itertools import chain
 
-from guitarPractice.exercises.exercise import Exercise
+from guitarPractice.exercise_builder.exercise import Exercise
 
 
 class ExerciseBuilder:
@@ -13,7 +13,7 @@ class ExerciseBuilder:
 
     def set_shapes(self, shapes):
         if self.shapes is not None:
-            raise AttributeError("Can only set the exercise shapes once")
+            raise AttributeError("Can only set the exercises shapes once")
 
         self.shapes = shapes
         return self

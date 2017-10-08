@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from guitarPractice.exercises.position import Position
+from guitarPractice.guitar_shapes.position import Position
 
 
 class PositionTest(TestCase):
