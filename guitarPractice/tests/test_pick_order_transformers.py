@@ -26,3 +26,9 @@ class TestAscendingTransformer(TestCase):
 
         self.assertEqual(len(note_sequence), 13)
         self.assertEqual(note_sequence, [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 3, 4, 5])
+
+    def test_ascending_transformer_will_repeat_notes_if_length_is_greater_than_double_shape_length(self):
+        note_sequence = pick_order_transformers.ascending_transformer([1, 2, 3, 4], sequence_length=12)
+
+        self.assertEqual(len(note_sequence), 12)
+        self.assertEqual(note_sequence, [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4])

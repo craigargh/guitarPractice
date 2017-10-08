@@ -152,7 +152,7 @@ def b_diminished() -> GuitarShape:
         Position(guitar_string=4),
         Position(guitar_string=3, fret=4, finger=4, is_highlighted=True),
         Position(guitar_string=2),
-        Position(guitar_string=2, fret=1, finger=1),
+        Position(guitar_string=1, fret=1, finger=1),
     ]
 
     return GuitarShape('B', 'Diminished', positions)

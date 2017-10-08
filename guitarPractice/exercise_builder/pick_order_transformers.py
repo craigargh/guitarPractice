@@ -1,39 +1,42 @@
+from copy import deepcopy
 from itertools import cycle
 from typing import List
 
-from guitarPractice.guitar_shapes.guitar_shape import GuitarShape
+from guitarPractice.guitar_shapes.position import Position
 
 
-def ascending_transformer(shape: List[GuitarShape], sequence_length: int = None):
+def ascending_transformer(positions: List[Position], sequence_length: int = None):
+    sequence = positions[:]
+
     sequence_length_is_set = sequence_length is not None and sequence_length > 0
 
-    if sequence_length_is_set and sequence_length <= len(shape):
-        sequence = shorten_shape(shape, sequence_length)
+    if sequence_length_is_set and sequence_length < len(positions):
+        sequence = shorten_positions(positions, sequence_length)
 
-    elif sequence_length_is_set and sequence_length > len(shape):
-        sequence = lengthen_shape(shape, sequence_length)
-
-    else:
-        sequence = shape[:]
+    elif sequence_length_is_set and sequence_length > len(positions):
+        sequence = lengthen_shape(positions, sequence_length)
 
     return sequence
 
 
-def shorten_shape(shape, sequence_length):
-    return shape[:sequence_length]
+def shorten_positions(positions, sequence_length):
+    return positions[:sequence_length]
 
 
-def lengthen_shape(shape, sequence_length):
-    shape_repeater = cycle(shape)
+def lengthen_shape(positions, sequence_length):
+    shape_repeater = cycle(positions)
 
-    partial_repeats_length = sequence_length % len(shape)
-    partial_repeats_sequence = shape[-partial_repeats_length:]
+    partial_repeats_length = sequence_length % len(positions)
+    if partial_repeats_length != 0:
+        partial_repeats_sequence = deepcopy(positions[-partial_repeats_length:])
+    else:
+        partial_repeats_sequence = []
 
     full_repeats_length = sequence_length - partial_repeats_length
 
     full_repeats_sequence = []
 
     for _ in range(full_repeats_length):
-        full_repeats_sequence.append(next(shape_repeater))
+        full_repeats_sequence.append(deepcopy(next(shape_repeater)))
 
     return full_repeats_sequence + partial_repeats_sequence
