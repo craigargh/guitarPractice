@@ -42,10 +42,10 @@ def shorten_positions(positions, sequence_length):
 
 
 def lengthen_sequence(positions, sequence_length):
-    partial_repeats_length = sequence_length % len(positions)
     full_repeats_count = sequence_length // len(positions)
-
     full_sequence_repeats = deepcopy(positions * full_repeats_count)
+
+    partial_repeats_length = sequence_length % len(positions)
 
     if partial_repeats_length != 0:
         partial_sequence_repeats = deepcopy(positions[-partial_repeats_length:])
