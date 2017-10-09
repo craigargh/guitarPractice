@@ -1,5 +1,4 @@
 from copy import deepcopy
-from itertools import cycle
 from typing import List
 
 from guitarPractice.guitar_shapes.position import Position
@@ -43,16 +42,10 @@ def shorten_positions(positions, sequence_length):
 
 
 def lengthen_sequence(positions, sequence_length):
-    positions_cycle = cycle(positions)
-
     partial_repeats_length = sequence_length % len(positions)
-    full_repeats_length = sequence_length - partial_repeats_length
+    full_repeats_count = sequence_length // len(positions)
 
-    full_sequence_repeats = []
-
-    for _ in range(full_repeats_length):
-        looped_position = deepcopy(next(positions_cycle))
-        full_sequence_repeats.append(looped_position)
+    full_sequence_repeats = deepcopy(positions * full_repeats_count)
 
     if partial_repeats_length != 0:
         partial_sequence_repeats = deepcopy(positions[-partial_repeats_length:])
