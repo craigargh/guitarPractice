@@ -42,14 +42,21 @@ def shorten_positions(positions, sequence_length):
 
 
 def lengthen_sequence(positions, sequence_length):
-    full_repeats_count = sequence_length // len(positions)
-    full_sequence_repeats = deepcopy(positions * full_repeats_count)
+    full_sequence_repeats = repeat_full_sequence(positions, sequence_length)
+    partial_sequence_repeats = repeat_partial_sequence_to_end(positions, sequence_length)
 
+    return full_sequence_repeats + partial_sequence_repeats
+
+
+def repeat_full_sequence(positions, sequence_length):
+    full_repeats_count = sequence_length // len(positions)
+    return positions * full_repeats_count
+
+
+def repeat_partial_sequence_to_end(positions, sequence_length):
     partial_repeats_length = sequence_length % len(positions)
 
     if partial_repeats_length != 0:
-        partial_sequence_repeats = deepcopy(positions[-partial_repeats_length:])
+        return deepcopy(positions[-partial_repeats_length:])
     else:
-        partial_sequence_repeats = []
-
-    return full_sequence_repeats + partial_sequence_repeats
+        return []

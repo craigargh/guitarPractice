@@ -41,11 +41,14 @@ class GuitarShape:
 
     def transform(self, transformer):
         transformed_shape = copy.deepcopy(self)
-        transformed_shape.positions = list(transformer(self.positions))
+        positions = list(transformer(self.positions))
+
+        transformed_shape.positions = [
+            copy.deepcopy(position)
+            for position in positions
+        ]
 
         return transformed_shape
-
-
 
 # TODO: Add property that converts full name into abbreviation e.g. C Major 7 to Cmaj7
 # TODO: Add constants for voicings e.g. MAJOR for 'Major', MAJOR_7 for 'Major 7'
