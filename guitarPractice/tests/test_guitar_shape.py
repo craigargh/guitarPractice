@@ -1,6 +1,7 @@
 from unittest import TestCase
 
 from guitarPractice.guitar_shapes.guitar_shape import GuitarShape
+from guitarPractice.guitar_shapes.position import Position
 
 
 class GuitarShapeTest(TestCase):
@@ -92,3 +93,12 @@ class GuitarShapeTest(TestCase):
 
         self.assertFalse(c_major.is_picked)
         self.assertTrue(c_major.is_strummed)
+
+    def test_transform_creates_deep_copies_of_positions(self):
+        position = Position(guitar_string=6)
+        c_major = GuitarShape('C', 'major', [position])
+
+        transformed_shape = c_major.transform(lambda positions: positions * 2)
+
+        self.assertEqual(len(transformed_shape.positions), 2)
+        self.assertIsNot(transformed_shape[0], transformed_shape[1])
