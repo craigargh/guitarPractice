@@ -1,11 +1,10 @@
 import copy
-from typing import List
 
 from guitarPractice.guitar_shapes.position import Position
 
 
 class GuitarShape:
-    def __init__(self, root_note: str, tonality: str, positions: List[Position]):
+    def __init__(self, root_note: str, tonality: str, positions):
         self.root_note = root_note
         self.tonality = tonality
         self.positions = positions
