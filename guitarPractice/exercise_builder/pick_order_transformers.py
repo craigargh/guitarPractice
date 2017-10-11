@@ -1,4 +1,3 @@
-from copy import deepcopy
 from typing import List
 
 from guitarPractice.guitar_shapes.position import Position
@@ -20,7 +19,7 @@ def ascending_and_descending_transformer(positions: List[Position], sequence_len
     sequence_part_1 = positions[:half_sequence_length]
     sequence_part_2 = list(reversed(positions[-half_sequence_length:]))
 
-    sequence = deepcopy(sequence_part_1) + deepcopy(sequence_part_2)
+    sequence = sequence_part_1 + sequence_part_2
 
     return resize_sequence(sequence, sequence_length)
 
@@ -57,6 +56,6 @@ def repeat_partial_sequence_to_end(positions, sequence_length):
     partial_repeats_length = sequence_length % len(positions)
 
     if partial_repeats_length != 0:
-        return deepcopy(positions[-partial_repeats_length:])
+        return positions[-partial_repeats_length:]
     else:
         return []
