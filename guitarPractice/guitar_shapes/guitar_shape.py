@@ -40,7 +40,7 @@ class GuitarShape:
 
     def transform(self, transformer):
         transformed_shape = copy.deepcopy(self)
-        positions = list(transformer(self.positions))
+        positions = transformer(self.positions)
 
         transformed_shape.positions = [
             copy.deepcopy(position)
