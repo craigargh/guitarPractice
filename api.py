@@ -1,5 +1,5 @@
 import jsonpickle
-from flask import Flask, jsonify
+from flask import Flask
 
 from guitarPractice.exercises.rhythm_arpeggios import level_one
 
