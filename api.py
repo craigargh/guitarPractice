@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 
 @app.route('/exercise/<exercise_name>/<difficulty>', strict_slashes=False)
-def hello_world(exercise_name, difficulty):
+def get_exercise(exercise_name, difficulty):
     exercise = level_one()
     exercise_json = jsonpickle.encode(exercise, unpicklable=False)
 
