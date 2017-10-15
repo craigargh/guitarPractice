@@ -60,8 +60,10 @@ def ascending_and_descending_skip_transformer(positions: List[Position], sequenc
     first_note = [positions.pop(0)]
     sequence = positions[:]
 
-    if len(sequence) > (sequence_length - 1) / 2:
-        last_notes_length = int((sequence_length) / 2)
+    half_sequence_length = sequence_length / 2
+
+    if len(sequence) > int(half_sequence_length):
+        last_notes_length = int(half_sequence_length)
         sequence = sequence[-last_notes_length:]
 
     last_notes = ascending_and_descending_transformer(sequence, sequence_length - 1)
