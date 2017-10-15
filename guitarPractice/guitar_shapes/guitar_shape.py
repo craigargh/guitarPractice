@@ -1,4 +1,5 @@
 import copy
+from collections import Counter
 
 from guitarPractice.guitar_shapes.position import Position
 
@@ -37,6 +38,23 @@ class GuitarShape:
     @is_strummed.setter
     def is_strummed(self, value):
         self.is_picked = not value
+
+    @property
+    def is_chord(self):
+        if len(self.positions) <= 1:
+            return False
+
+        string_counter = Counter(
+            position.guitar_string
+            for position in self.positions
+        )
+
+        are_all_strings_unique = all(
+            count == 1
+            for _, count in string_counter.items()
+        )
+
+        return are_all_strings_unique
 
     def transform(self, transformer):
         transformed_shape = copy.deepcopy(self)

@@ -102,3 +102,39 @@ class GuitarShapeTest(TestCase):
 
         self.assertEqual(len(transformed_shape.positions), 2)
         self.assertIsNot(transformed_shape[0], transformed_shape[1])
+
+    def test_is_chord(self):
+        positions = [
+            Position(guitar_string=6),
+            Position(guitar_string=5)
+        ]
+        shape = GuitarShape('C', 'major', positions)
+
+        self.assertTrue(shape.is_chord)
+
+    def test_is_not_chord_when_only_one_position(self):
+        positions = [
+            Position(guitar_string=6),
+        ]
+        shape = GuitarShape('C', 'major', positions)
+
+        self.assertFalse(shape.is_chord)
+
+    def test_is_not_chord_when_two_positions_on_same_string(self):
+        positions = [
+            Position(guitar_string=6),
+            Position(guitar_string=6),
+        ]
+        shape = GuitarShape('C', 'major', positions)
+
+        self.assertFalse(shape.is_chord)
+
+    def test_is_not_chord_when_more_than_two_positions_on_same_string(self):
+        positions = [
+            Position(guitar_string=6),
+            Position(guitar_string=6),
+            Position(guitar_string=6),
+        ]
+        shape = GuitarShape('C', 'major', positions)
+
+        self.assertFalse(shape.is_chord)
