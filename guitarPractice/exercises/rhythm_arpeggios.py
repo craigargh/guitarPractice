@@ -2,6 +2,8 @@ from functools import partial
 from random import sample, choice
 
 from guitarPractice.exercise_builder.exercise_builder import ExerciseBuilder
+from guitarPractice.exercise_builder.higher_order_transformers import make_consistent_random_transformer, \
+    make_root_first_consistent_random_transformer
 from guitarPractice.exercise_builder.pick_order_transformers import ascending_transformer, \
     ascending_and_descending_transformer
 from guitarPractice.guitar_shapes.chord_collections import c_major_scale_triad_chords
@@ -26,11 +28,12 @@ def get_chords(quantity):
 
 def get_level_one_transformer():
     all_transformers = [
-        ascending_transformer,
-        ascending_and_descending_transformer,
+        # make_consistent_random_transformer(6),
+        make_root_first_consistent_random_transformer(6),
     ]
 
     transformer = choice(all_transformers)
 
     notes_per_arpeggio = choice([4, 6, 8])
+
     return partial(transformer, sequence_length=notes_per_arpeggio)
