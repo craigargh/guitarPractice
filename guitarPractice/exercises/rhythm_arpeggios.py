@@ -6,11 +6,13 @@ from guitarPractice.exercise_builder.higher_order_transformers import (
     make_consistent_order_random_transformer,
     make_root_consistent_order_random_transformer,
     make_root_consistent_string_random_transformer,
-    make_consistent_string_random_transformer)
+    make_consistent_string_random_transformer
+)
 from guitarPractice.exercise_builder.pick_order_transformers import (
     ascending_transformer,
     ascending_and_descending_transformer,
-    ascending_skip_transformer, ascending_and_descending_skip_transformer)
+    ascending_skip_transformer, ascending_and_descending_skip_transformer
+)
 from guitarPractice.guitar_shapes.chord_collections import c_major_scale_triad_chords, c_major_scale_seven_chords
 
 
