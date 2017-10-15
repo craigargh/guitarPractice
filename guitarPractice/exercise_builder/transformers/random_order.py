@@ -4,7 +4,7 @@ from guitarPractice.exercise_builder.transformers.transformer_utils import resiz
 
 
 def consistent_steps(length):
-    order = random.sample(range(length), length)
+    order = create_random_order(length)
 
     def specific_sequence_transformer(positions, sequence_length=None):
         if sequence_length is None:
@@ -17,7 +17,7 @@ def consistent_steps(length):
 
 
 def root_and_consistent_steps(length):
-    order = random.sample(range(length - 1), length - 1)
+    order = create_random_order(length - 1)
 
     def specific_sequence_transformer(positions, sequence_length=None):
         if sequence_length is None:
@@ -32,7 +32,7 @@ def root_and_consistent_steps(length):
 
 
 def consistent_strings(length):
-    order = random.sample(range(length), length)
+    order = create_random_order(length)
 
     def specific_sequence_transformer(positions, sequence_length=None):
         if sequence_length is None:
@@ -46,7 +46,7 @@ def consistent_strings(length):
 
 
 def root_and_consistent_strings(length):
-    order = random.sample(range(length - 1), length - 1)
+    order = create_random_order(length - 1)
 
     def specific_sequence_transformer(positions, sequence_length=None):
         if sequence_length is None:
@@ -58,6 +58,10 @@ def root_and_consistent_strings(length):
         return resize_sequence(first_note + random_notes, sequence_length)
 
     return specific_sequence_transformer
+
+
+def create_random_order(length):
+    return random.sample(range(length), length)
 
 
 def get_shapes_in_specific_order(positions, order, index_multiplier=1):
