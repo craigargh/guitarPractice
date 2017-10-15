@@ -1,9 +1,9 @@
 import random
 
-from guitarPractice.exercise_builder.transformer_utils import resize_sequence
+from guitarPractice.exercise_builder.transformers.transformer_utils import resize_sequence
 
 
-def make_consistent_order_random_transformer(length):
+def consistent_steps(length):
     order = random.sample(range(length), length)
 
     def specific_sequence_transformer(positions, sequence_length=None):
@@ -25,7 +25,7 @@ def make_consistent_order_random_transformer(length):
     return specific_sequence_transformer
 
 
-def make_root_consistent_order_random_transformer(length):
+def root_and_consistent_steps(length):
     order = random.sample(range(length - 1), length - 1)
 
     def specific_sequence_transformer(positions, sequence_length=None):
@@ -48,7 +48,7 @@ def make_root_consistent_order_random_transformer(length):
     return specific_sequence_transformer
 
 
-def make_consistent_string_random_transformer(length):
+def consistent_strings(length):
     order = random.sample(range(length), length)
 
     def specific_sequence_transformer(positions, sequence_length=None):
@@ -70,7 +70,7 @@ def make_consistent_string_random_transformer(length):
     return specific_sequence_transformer
 
 
-def make_root_consistent_string_random_transformer(length):
+def root_and_consistent_strings(length):
     order = random.sample(range(length - 1), length - 1)
 
     def specific_sequence_transformer(positions, sequence_length=None):

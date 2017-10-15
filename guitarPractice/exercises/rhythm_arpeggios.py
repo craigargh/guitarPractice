@@ -1,18 +1,9 @@
-from functools import partial
 from random import sample, choice, randrange
 
+from guitarPractice.exercise_builder.transformers import order
 from guitarPractice.exercise_builder.exercise_builder import ExerciseBuilder
-from guitarPractice.exercise_builder.higher_order_transformers import (
-    make_consistent_order_random_transformer,
-    make_root_consistent_order_random_transformer,
-    make_root_consistent_string_random_transformer,
-    make_consistent_string_random_transformer
-)
-from guitarPractice.exercise_builder.pick_order_transformers import (
-    ascending_transformer,
-    ascending_and_descending_transformer,
-    ascending_skip_transformer, ascending_and_descending_skip_transformer
-)
+from guitarPractice.exercise_builder.transformers import random_order
+from guitarPractice.exercises.exercise_utils import choose_transformer
 from guitarPractice.guitar_shapes.chord_collections import c_major_scale_triad_chords, c_major_scale_seven_chords
 
 
@@ -26,6 +17,22 @@ def level_one():
         .build()
 
     return exercise
+
+
+def get_level_one_chords(quantity):
+    all_chords = c_major_scale_triad_chords()
+    return sample(all_chords, quantity)
+
+
+def get_level_one_transformer():
+    all_transformers = [
+        order.ascending,
+        order.asc_and_desc
+    ]
+
+    notes_per_arpeggio = choice([4, 6, 8])
+
+    return choose_transformer(all_transformers, notes_per_arpeggio)
 
 
 def level_two():
@@ -45,54 +52,34 @@ def level_two():
     return exercise
 
 
-def get_level_one_chords(quantity):
-    all_chords = c_major_scale_triad_chords()
-    return sample(all_chords, quantity)
-
-
 def get_level_two_chords(quantity):
     all_chords = c_major_scale_triad_chords() + c_major_scale_seven_chords()
     return sample(all_chords, quantity)
 
 
-def get_level_one_transformer():
-    all_transformers = [
-        ascending_transformer,
-        ascending_and_descending_transformer
-    ]
-
-    transformer = choice(all_transformers)
-
-    notes_per_arpeggio = choice([4, 6, 8])
-
-    return partial(transformer, sequence_length=notes_per_arpeggio)
-
-
 def get_level_two_transformer():
     all_transformers = [
-        ascending_transformer,
-        ascending_and_descending_transformer,
-        ascending_skip_transformer,
-        ascending_and_descending_skip_transformer
+        order.ascending,
+        order.asc_and_desc,
+        order.ascending_skip,
+        order.asc_and_desc_skip
     ]
-
-    transformer = choice(all_transformers)
 
     notes_per_arpeggio = choice([4, 6, 8])
 
-    return partial(transformer, sequence_length=notes_per_arpeggio)
+    return choose_transformer(all_transformers, notes_per_arpeggio)
 
 
 def get_randomised_transformer():
     notes_per_arpeggio = choice([4, 6])
 
-    all_transformers = [
-        make_consistent_order_random_transformer(notes_per_arpeggio),
-        make_root_consistent_order_random_transformer(notes_per_arpeggio),
-        make_consistent_string_random_transformer(notes_per_arpeggio),
-        make_root_consistent_string_random_transformer(notes_per_arpeggio),
+    random_transformers = [
+        random_order.consistent_steps(notes_per_arpeggio),
+        random_order.root_and_consistent_steps(notes_per_arpeggio),
+        random_order.consistent_strings(notes_per_arpeggio),
+        random_order.root_and_consistent_strings(notes_per_arpeggio),
     ]
 
-    transformer = choice(all_transformers)
+    return choose_transformer(random_transformers, notes_per_arpeggio)
 
-    return partial(transformer, sequence_length=notes_per_arpeggio)
+

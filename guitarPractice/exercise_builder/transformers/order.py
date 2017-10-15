@@ -1,16 +1,16 @@
 from typing import List
 
-from guitarPractice.exercise_builder.transformer_utils import resize_sequence
+from guitarPractice.exercise_builder.transformers.transformer_utils import resize_sequence
 from guitarPractice.guitar_shapes.position import Position
 
 
-def ascending_transformer(positions: List[Position], sequence_length: int = None):
+def ascending(positions: List[Position], sequence_length: int = None):
     sequence = resize_sequence(positions, sequence_length)
 
     return sequence
 
 
-def ascending_and_descending_transformer(positions: List[Position], sequence_length: int = None):
+def asc_and_desc(positions: List[Position], sequence_length: int = None):
     asc_length, desc_length = calculate_asc_desc_sequence_length(positions, sequence_length)
 
     ascending_sequence = positions[:asc_length]
@@ -37,7 +37,7 @@ def calculate_asc_desc_sequence_length(positions, sequence_length):
     return asc_length, desc_length
 
 
-def ascending_skip_transformer(positions: List[Position], sequence_length: int = None):
+def ascending_skip(positions: List[Position], sequence_length: int = None):
     first_note = [positions.pop(0)]
 
     if sequence_length:
@@ -53,9 +53,9 @@ def ascending_skip_transformer(positions: List[Position], sequence_length: int =
     return first_note + last_notes
 
 
-def ascending_and_descending_skip_transformer(positions: List[Position], sequence_length: int = None):
+def asc_and_desc_skip(positions: List[Position], sequence_length: int = None):
     if not sequence_length or len(positions) <= sequence_length / 2:
-        return ascending_and_descending_transformer(positions, sequence_length)
+        return asc_and_desc(positions, sequence_length)
 
     first_note = [positions.pop(0)]
     sequence = positions[:]
@@ -66,6 +66,6 @@ def ascending_and_descending_skip_transformer(positions: List[Position], sequenc
         last_notes_length = int(half_sequence_length)
         sequence = sequence[-last_notes_length:]
 
-    last_notes = ascending_and_descending_transformer(sequence, sequence_length - 1)
+    last_notes = asc_and_desc(sequence, sequence_length - 1)
 
     return first_note + last_notes
