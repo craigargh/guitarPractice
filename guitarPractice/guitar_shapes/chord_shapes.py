@@ -163,7 +163,7 @@ def b_diminished_seven_flat_five() -> GuitarShape:
         Position(guitar_string=4),
         Position(guitar_string=3, fret=2, finger=2, is_highlighted=True),
         Position(guitar_string=2),
-        Position(guitar_string=2, fret=1, finger=1),
+        Position(guitar_string=1, fret=1, finger=1),
     ]
 
     return GuitarShape('B', 'Diminished', positions)
