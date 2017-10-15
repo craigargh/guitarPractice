@@ -61,4 +61,4 @@ class TestExerciseBuilder(TestCase):
         with self.assertRaises(AttributeError):
             ExerciseBuilder() \
                 .set_sequencer("sequencer") \
-                .set_sequencer("again") \
+                .set_sequencer("again")
