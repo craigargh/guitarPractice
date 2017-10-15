@@ -74,10 +74,10 @@ def get_randomised_transformer():
     notes_per_arpeggio = choice([4, 6])
 
     random_transformers = [
-        random_order.consistent_steps(notes_per_arpeggio),
-        random_order.root_and_consistent_steps(notes_per_arpeggio),
-        random_order.consistent_strings(notes_per_arpeggio),
-        random_order.root_and_consistent_strings(notes_per_arpeggio),
+        random_order.make_consistent_steps(notes_per_arpeggio),
+        random_order.make_root_and_consistent_steps(notes_per_arpeggio),
+        random_order.make_consistent_strings(notes_per_arpeggio),
+        random_order.make_root_and_consistent_strings(notes_per_arpeggio),
     ]
 
     return choose_transformer(random_transformers, notes_per_arpeggio)

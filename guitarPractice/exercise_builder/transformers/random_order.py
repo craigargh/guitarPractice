@@ -4,22 +4,22 @@ from functools import partial
 from guitarPractice.exercise_builder.transformers.transformer_utils import resize_sequence
 
 
-def consistent_steps(length):
+def make_consistent_steps(length):
     order = create_random_order(length)
     return partial(specific_sequence_transformer, order=order)
 
 
-def root_and_consistent_steps(length):
+def make_root_and_consistent_steps(length):
     order = create_random_order(length - 1)
     return partial(specific_sequence_transformer, order=order, pop_first=True)
 
 
-def consistent_strings(length):
+def make_consistent_strings(length):
     order = create_random_order(length)
     return partial(specific_sequence_transformer, order=order, index_multiplier=-1)
 
 
-def root_and_consistent_strings(length):
+def make_root_and_consistent_strings(length):
     order = create_random_order(length - 1)
     return partial(specific_sequence_transformer, order=order, pop_first=True, index_multiplier=-1)
 
