@@ -103,6 +103,32 @@ class GuitarShapeTest(TestCase):
         self.assertEqual(len(transformed_shape.positions), 2)
         self.assertIsNot(transformed_shape[0], transformed_shape[1])
 
+    def test_transform_does_not_change_original_list(self):
+        def test_transformer(positions):
+            positions.pop(0)
+            return positions
+
+        position = Position(guitar_string=6)
+        c_major = GuitarShape('C', 'major', [position])
+
+        transformed_shape = c_major.transform(test_transformer)
+
+        self.assertEqual(len(c_major.positions), 1)
+        self.assertEqual(len(transformed_shape.positions), 0)
+
+    def test_transform_does_not_change_positions_in_original_list(self):
+        def test_transformer(positions):
+            positions[0].guitar_string = 5
+            return positions
+
+        position = Position(guitar_string=6)
+        c_major = GuitarShape('C', 'major', [position])
+
+        transformed_shape = c_major.transform(test_transformer)
+
+        self.assertEqual(c_major.positions[0].guitar_string, 6)
+        self.assertEqual(transformed_shape.positions[0].guitar_string, 5)
+
     def test_is_chord(self):
         positions = [
             Position(guitar_string=6),
