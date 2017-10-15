@@ -3,8 +3,8 @@ from unittest import TestCase
 from guitarPractice.exercise_builder.pick_order_transformers import (
     ascending_transformer,
     ascending_and_descending_transformer,
-    ascending_skip_transformer
-)
+    ascending_skip_transformer,
+    ascending_and_descending_skip_transformer)
 
 
 class TestAscendingTransformer(TestCase):
@@ -60,6 +60,11 @@ class TestAscendingAndDescendingTransformer(TestCase):
 
         self.assertEqual(note_sequence, [1, 2, 3, 4, 4, 3, 2, 1, 2, 1])
 
+    def test_can_set_length_to_an_uneven_number(self):
+        note_sequence = ascending_and_descending_transformer([1, 2], sequence_length=3)
+
+        self.assertEqual(note_sequence, [1, 2, 1])
+
 
 class TestAscendingSkipTransformer(TestCase):
     def test_returns_notes_in_ascending_order(self):
@@ -81,3 +86,30 @@ class TestAscendingSkipTransformer(TestCase):
         note_sequence = ascending_skip_transformer(([1, 2, 3, 4, 5]), sequence_length=4)
 
         self.assertEqual(note_sequence, [1, 3, 4, 5])
+
+
+class AscendingAndDescendingSkipTransformer(TestCase):
+    def test_returns_notes_in_asc_and_desc_order(self):
+        note_sequence = ascending_and_descending_skip_transformer(([1, 2, 3, 4]))
+
+        self.assertEqual(note_sequence, [1, 2, 3, 4, 3, 2])
+
+    def test_plays_first_note_and_skips_notes_when_length_is_set(self):
+        note_sequence = ascending_and_descending_skip_transformer(([1, 2, 3, 4]), sequence_length=4)
+
+        self.assertEqual(note_sequence, [1, 3, 4, 3])
+
+    def test_plays_repeats_notes_when_length_is_uneven(self):
+        note_sequence = ascending_and_descending_skip_transformer(([1, 2, 3, 4]), sequence_length=5)
+
+        self.assertEqual(note_sequence, [1, 3, 4, 4, 3])
+
+    def test_extends_sequence_when_less_than_length(self):
+        note_sequence = ascending_and_descending_skip_transformer(([1, 2, 3, 4]), sequence_length=8)
+
+        self.assertEqual(note_sequence, [1, 2, 3, 4, 4, 3, 2, 1])
+
+    def test_shortens_long_sequences(self):
+        note_sequence = ascending_and_descending_skip_transformer(([1, 2, 3, 4, 5, 6]), sequence_length=8)
+
+        self.assertEqual(note_sequence, [1, 3, 4, 5, 6, 5, 4, 3])
