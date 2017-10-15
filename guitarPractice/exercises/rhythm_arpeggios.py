@@ -76,7 +76,7 @@ def get_level_two_transformer():
 
     transformer = choice(all_transformers)
 
-    notes_per_arpeggio = choice([4, 6])
+    notes_per_arpeggio = choice([4, 6, 8])
 
     return partial(transformer, sequence_length=notes_per_arpeggio)
 
