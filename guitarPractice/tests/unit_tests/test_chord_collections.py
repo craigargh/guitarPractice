@@ -7,6 +7,9 @@ class TestCMajorTriads(TestCase):
     def setUp(self):
         self.chords = c_major_scale_triad_chords()
 
+    def test_collection_contains_seven_chords(self):
+        self.assertEqual(len(self.chords), 7)
+
     def test_first_chord_is_c_major(self):
         self.assertEqual(self.chords[0].name, 'C Major')
 
@@ -32,6 +35,9 @@ class TestCMajorTriads(TestCase):
 class TestCMajorSeventh(TestCase):
     def setUp(self):
         self.chords = c_major_scale_seven_chords()
+
+    def test_collection_contains_seven_chords(self):
+        self.assertEqual(len(self.chords), 7)
 
     def test_first_chord_is_c_major_7(self):
         self.assertEqual(self.chords[0].name, 'C Major 7')
