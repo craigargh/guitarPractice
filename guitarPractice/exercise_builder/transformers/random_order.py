@@ -10,16 +10,7 @@ def consistent_steps(length):
         if sequence_length is None:
             sequence_length = len(positions)
 
-        notes = []
-
-        for index in order:
-            try:
-                note = positions[index]
-            except IndexError:
-                note = positions[-1]
-
-            notes.append(note)
-
+        notes = get_shapes_in_specific_order(positions, order)
         return resize_sequence(notes, sequence_length)
 
     return specific_sequence_transformer
@@ -33,15 +24,7 @@ def root_and_consistent_steps(length):
             sequence_length = len(positions)
 
         first_note = [positions.pop(0)]
-        random_notes = []
-
-        for index in order:
-            try:
-                note = positions[index]
-            except IndexError:
-                note = positions[-1]
-
-            random_notes.append(note)
+        random_notes = get_shapes_in_specific_order(positions, order)
 
         return resize_sequence(first_note + random_notes, sequence_length)
 
@@ -55,15 +38,7 @@ def consistent_strings(length):
         if sequence_length is None:
             sequence_length = len(positions)
 
-        notes = []
-
-        for index in order:
-            try:
-                note = positions[-index]
-            except IndexError:
-                note = positions[-1]
-
-            notes.append(note)
+        notes = get_shapes_in_specific_order(positions, order, -1)
 
         return resize_sequence(notes, sequence_length)
 
@@ -78,16 +53,21 @@ def root_and_consistent_strings(length):
             sequence_length = len(positions)
 
         first_note = [positions.pop(0)]
-        random_notes = []
-
-        for index in order:
-            try:
-                note = positions[-index]
-            except IndexError:
-                note = positions[-1]
-
-            random_notes.append(note)
+        random_notes = get_shapes_in_specific_order(positions, order, -1)
 
         return resize_sequence(first_note + random_notes, sequence_length)
 
     return specific_sequence_transformer
+
+
+def get_shapes_in_specific_order(positions, order, index_multiplier=1):
+    random_notes = []
+
+    for index in order:
+        try:
+            note = positions[index * index_multiplier]
+        except IndexError:
+            note = positions[-1]
+
+        random_notes.append(note)
+    return random_notes
