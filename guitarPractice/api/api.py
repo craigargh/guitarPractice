@@ -1,9 +1,11 @@
 import jsonpickle
 from flask import Flask
+from flask_cors import CORS
 
 from guitarPractice.exercises.rhythm_arpeggios import level_one
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/exercise/<exercise_name>/<difficulty>', strict_slashes=False)
