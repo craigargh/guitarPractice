@@ -94,7 +94,7 @@ def f_major_seven() -> GuitarShape:
         Position(guitar_string=1),
     ]
 
-    return GuitarShape('F', 'Major', positions)
+    return GuitarShape('F', 'Major 7', positions)
 
 
 def g_major() -> GuitarShape:
@@ -158,7 +158,7 @@ def b_diminished() -> GuitarShape:
     return GuitarShape('B', 'Diminished', positions)
 
 
-def b_diminished_seven_flat_five() -> GuitarShape:
+def b_minor_seven_flat_five() -> GuitarShape:
     positions = [
         Position(guitar_string=4),
         Position(guitar_string=3, fret=2, finger=2, is_highlighted=True),
@@ -166,4 +166,4 @@ def b_diminished_seven_flat_five() -> GuitarShape:
         Position(guitar_string=1, fret=1, finger=1),
     ]
 
-    return GuitarShape('B', 'Diminished', positions)
+    return GuitarShape('B', 'Minor 7 Flat 5', positions)

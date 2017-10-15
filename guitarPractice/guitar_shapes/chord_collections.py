@@ -29,5 +29,5 @@ def c_major_scale_seven_chords() -> List[GuitarShape]:
         chord_shapes.f_major_seven(),
         chord_shapes.g_seven(),
         chord_shapes.a_minor_seven(),
-        chord_shapes.b_diminished_seven_flat_five(),
+        chord_shapes.b_minor_seven_flat_five(),
     ]

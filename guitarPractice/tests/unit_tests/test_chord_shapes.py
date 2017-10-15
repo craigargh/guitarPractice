@@ -83,7 +83,7 @@ class TestChordShapes(TestCase):
         self.assertEqual(len(chord.positions), 4)
 
     def test_b_diminished_seven_flat_five(self):
-        chord = chord_shapes.b_diminished_seven_flat_five()
+        chord = chord_shapes.b_minor_seven_flat_five()
 
         self.assertTrue(chord.is_chord)
         self.assertEqual(len(chord.positions), 4)
