@@ -57,10 +57,21 @@ class ExerciseBuilder:
 
     @staticmethod
     def _apply_sequencer(shapes, sequencer):
-        if sequencer:
-            return sequencer(shapes)
+        if not sequencer:
+            return shapes
 
-        return shapes
+        copied_shapes = [
+            deepcopy(shape)
+            for shape in shapes
+        ]
+
+        sequenced_shapes = sequencer(copied_shapes)
+
+        return [
+            deepcopy(shape)
+            for shape in sequenced_shapes
+        ]
+
 
     @staticmethod
     def _apply_transformations(shapes, transformers):

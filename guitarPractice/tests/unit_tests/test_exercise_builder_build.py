@@ -170,3 +170,28 @@ class TestExerciseBuilderBuild(TestCase):
         self.assertEqual(exercise.sequence[6].order, 4)
         self.assertEqual(exercise.sequence[7].order, 5)
         self.assertEqual(exercise.sequence[8].order, 6)
+
+    def test_sequencer_applies_deepcopy_to_shapes_before_they_are_sequenced(self):
+        inside_shapes = []
+
+        def sequencer(shapes):
+            inside_shapes.extend(shapes)
+            return shapes
+
+        ExerciseBuilder()._apply_sequencer(self.shapes, sequencer)
+
+        self.assertEqual(2, len(inside_shapes))
+        self.assertIsNot(inside_shapes[0], self.shapes[0])
+
+    def test_sequencer_applies_deepcopy_to_shapes_after_they_are_sequenced(self):
+        inside_shapes = []
+
+        def sequencer(shapes):
+            inside_shapes.extend(shapes)
+            return shapes
+
+        sequenced_shapes = ExerciseBuilder()._apply_sequencer(self.shapes, sequencer)
+
+        self.assertEqual(2, len(inside_shapes))
+        self.assertIsNot(inside_shapes[0], sequenced_shapes[0])
+
