@@ -19,8 +19,6 @@ def level_one():
         .set_shapes(shapes) \
         .build()
 
-    print(exercise)
-
     return exercise
 
 
