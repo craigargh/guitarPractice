@@ -2,10 +2,10 @@ from collections import Counter
 from unittest import TestCase
 
 from guitarPractice.exercise_builder.exercise import Exercise
-from guitarPractice.exercises.rhythm_chords import level_one
+from guitarPractice.exercises.chord_changes import level_one
 
 
-class TestRhythmChords(TestCase):
+class TestChordChanges(TestCase):
     def test_level_one_returns_an_exercise(self):
         exercise = level_one()
 
