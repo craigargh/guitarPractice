@@ -27,7 +27,9 @@ def get_level_one_chords(quantity):
 def get_level_one_transformer():
     all_transformers = [
         order.ascending,
-        order.asc_and_desc
+        order.asc_and_desc,
+        order.ascending_skip,
+        order.asc_and_desc_skip
     ]
 
     notes_per_arpeggio = choice([4, 6, 8])
@@ -42,7 +44,7 @@ def level_two():
         transformer = get_randomised_transformer()
     else:
         chords = get_level_two_chords(4)
-        transformer = get_level_two_transformer()
+        transformer = get_level_one_transformer()
 
     exercise = ExerciseBuilder() \
         .set_shapes(chords) \
@@ -57,19 +59,6 @@ def get_level_two_chords(quantity):
     return sample(all_chords, quantity)
 
 
-def get_level_two_transformer():
-    all_transformers = [
-        order.ascending,
-        order.asc_and_desc,
-        order.ascending_skip,
-        order.asc_and_desc_skip
-    ]
-
-    notes_per_arpeggio = choice([4, 6, 8])
-
-    return choose_transformer(all_transformers, notes_per_arpeggio)
-
-
 def get_randomised_transformer():
     notes_per_arpeggio = choice([4, 6])
 
@@ -81,5 +70,3 @@ def get_randomised_transformer():
     ]
 
     return choose_transformer(random_transformers, notes_per_arpeggio)
-
-
