@@ -25,3 +25,8 @@ class TestExerciseApi(TestCase):
         data = json.loads(response.data)
 
         self.assertGreater(len(data['sequence']), 0)
+
+    def test_invalid_exercise_name_returns_404(self):
+        response = self.api.get('/exercise/spooky-skeletons/1/')
+
+        self.assertEqual(response.status_code, 404)

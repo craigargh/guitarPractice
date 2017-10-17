@@ -10,16 +10,23 @@ CORS(app)
 
 @app.route('/exercise/<exercise_name>/<int:difficulty>', strict_slashes=False)
 def get_exercise(exercise_name, difficulty):
-    exercise = make_exercise(exercise_name, difficulty)
-    exercise_json = jsonpickle.encode(exercise, unpicklable=False)
+    try:
+        exercise = make_exercise(exercise_name, difficulty)
 
-    response = app.response_class(
-        response=exercise_json,
-        status=200,
-        mimetype='application/json'
-    )
+    except ValueError:
+        response = app.response_class(status=404)
 
-    return response
+    else:
+        exercise_json = jsonpickle.encode(exercise, unpicklable=False)
+
+        response = app.response_class(
+            response=exercise_json,
+            status=200,
+            mimetype='application/json'
+        )
+
+    finally:
+        return response
 
 
 if __name__ == '__main__':
