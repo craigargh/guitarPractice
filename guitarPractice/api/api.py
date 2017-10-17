@@ -2,15 +2,15 @@ import jsonpickle
 from flask import Flask
 from flask_cors import CORS
 
-from guitarPractice.exercises.arpeggio_picking import level_one
+from guitarPractice.exercises.exercises import make_exercise
 
 app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/exercise/<exercise_name>/<difficulty>', strict_slashes=False)
+@app.route('/exercise/<exercise_name>/<int:difficulty>', strict_slashes=False)
 def get_exercise(exercise_name, difficulty):
-    exercise = level_one()
+    exercise = make_exercise(exercise_name, difficulty)
     exercise_json = jsonpickle.encode(exercise, unpicklable=False)
 
     response = app.response_class(
