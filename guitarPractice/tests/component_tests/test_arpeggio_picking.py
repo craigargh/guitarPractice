@@ -2,7 +2,7 @@ from collections import Counter
 from unittest import TestCase
 
 from guitarPractice.exercise_builder.exercise import Exercise
-from guitarPractice.exercises.rhythm_arpeggios import level_one, level_two
+from guitarPractice.exercises.arpeggio_picking import level_one, level_two
 
 
 class TestRhythmArpeggios(TestCase):
