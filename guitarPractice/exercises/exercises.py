@@ -7,7 +7,10 @@ def make_exercise(exercise_name, difficulty):
         'chord-changes': chords_changes_levels()
     }
 
-    exercise = exercises[exercise_name][difficulty]
+    try:
+        exercise = exercises[exercise_name][difficulty]
+    except KeyError:
+        raise ValueError('Invalid exercise name or difficulty')
 
     return exercise()
 

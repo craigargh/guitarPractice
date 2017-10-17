@@ -28,3 +28,12 @@ class TestExercises(TestCase):
 
         mock.assert_called_once()
         self.assertEqual(exercise, 'this is the exercise')
+
+    def test_make_exercise_returns_exception_for_invalid_exercise_name(self):
+        with self.assertRaises(ValueError):
+            make_exercise('spooky-skeletons', 1)
+
+    def test_make_exercise_returns_exception_for_invalid_exercise_name(self):
+        with self.assertRaises(ValueError):
+            make_exercise('arpeggio-picking', 1000000000)
+
