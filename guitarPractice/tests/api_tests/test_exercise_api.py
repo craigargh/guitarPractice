@@ -31,6 +31,11 @@ class TestExerciseApi(TestCase):
 
         self.assertEqual(response.status_code, 404)
 
+    def test_invalid_exercise_name_returns_error_message(self):
+        response = self.api.get('/exercise/spooky-skeletons/1/')
+
+        self.assertEqual(response.data, b'Invalid exercise name or difficulty')
+
     def test_get_arpeggio_picking_two_exercise_returns_ok(self):
         response = self.api.get('/exercise/arpeggio-picking/2/')
 

@@ -13,8 +13,11 @@ def get_exercise(exercise_name, difficulty):
     try:
         exercise = make_exercise(exercise_name, difficulty)
 
-    except ValueError:
-        response = app.response_class(status=404)
+    except ValueError as value_error:
+        response = app.response_class(
+            response=str(value_error),
+            status=404
+        )
 
     else:
         exercise_json = jsonpickle.encode(exercise, unpicklable=False)
