@@ -28,8 +28,7 @@ def get_exercise(exercise_name, difficulty):
             mimetype='application/json'
         )
 
-    finally:
-        return response
+    return response
 
 
 if __name__ == '__main__':
