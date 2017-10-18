@@ -32,4 +32,4 @@ def get_exercise(exercise_name, difficulty):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
