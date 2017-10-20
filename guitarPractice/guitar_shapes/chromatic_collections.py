@@ -12,5 +12,5 @@ def make_chromatic_shape(*, root_note="", guitar_string=1, start_fret=0, quantit
         for index in range(quantity)
     ]
 
-    return GuitarShape(root_note="", tonality="", positions=positions)
+    return GuitarShape(root_note=root_note, tonality="Chromatic", positions=positions)
 

@@ -35,3 +35,13 @@ class TestChromaticCollections(TestCase):
         self.assertEqual(2, shape.positions[5].finger)
         self.assertEqual(3, shape.positions[6].finger)
         self.assertEqual(4, shape.positions[7].finger)
+
+    def test_make_chromatic_shape_sets_root_note(self):
+        shape = make_chromatic_shape(root_note="A")
+
+        self.assertEqual("A", shape.root_note)
+
+    def test_make_chromatic_shape_sets_tonality(self):
+        shape = make_chromatic_shape()
+
+        self.assertEqual("Chromatic", shape.tonality)
