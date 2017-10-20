@@ -1,9 +1,9 @@
 from unittest import TestCase
 
-from guitarPractice.guitar_shapes.chromatic_collections import make_chromatic_shape
+from guitarPractice.guitar_shapes.chromatic_collections import make_chromatic_shape, chromatic_collection_one
 
 
-class TestChromaticCollections(TestCase):
+class TestMakeChromaticShape(TestCase):
     def test_make_chromatic_shape_makes_a_quantity_of_positions(self):
         shape = make_chromatic_shape(quantity=4)
 
@@ -65,3 +65,20 @@ class TestChromaticCollections(TestCase):
         shape = make_chromatic_shape()
 
         self.assertEqual(1, shape.positions[0].guitar_string)
+
+
+class TestChromaticCollections(TestCase):
+    def test_chromatic_collection_one_contains_one_shape(self):
+        collection = chromatic_collection_one()
+
+        self.assertEqual(6, len(collection))
+
+    def test_chromatic_collection_one_has_a_shape_on_each_string(self):
+        collection = chromatic_collection_one()
+
+        self.assertEqual(6, collection[0].positions[0].guitar_string)
+        self.assertEqual(5, collection[1].positions[0].guitar_string)
+        self.assertEqual(4, collection[2].positions[0].guitar_string)
+        self.assertEqual(3, collection[3].positions[0].guitar_string)
+        self.assertEqual(2, collection[4].positions[0].guitar_string)
+        self.assertEqual(1, collection[5].positions[0].guitar_string)
