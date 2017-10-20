@@ -23,7 +23,7 @@ def asc_and_desc(positions: List[Position], sequence_length: int = None):
 
 def calculate_asc_desc_sequence_length(positions, sequence_length):
     if sequence_length is None:
-        sequence_length = (len(positions) * 2) - 2
+        sequence_length = (len(positions) - 1) * 2
 
     asc_length = int(sequence_length / 2)
     desc_length = asc_length
@@ -53,7 +53,7 @@ def ascending_skip(positions: List[Position], sequence_length: int = None):
 
 def asc_and_desc_skip(positions: List[Position], sequence_length: int = None):
     if sequence_length is None:
-        sequence_length = (len(positions) * 2) - 2
+        sequence_length = (len(positions) - 1) * 2
 
     half_sequence_length = int(sequence_length / 2)
 
