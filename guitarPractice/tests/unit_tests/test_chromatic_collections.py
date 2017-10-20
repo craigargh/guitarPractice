@@ -45,3 +45,23 @@ class TestChromaticCollections(TestCase):
         shape = make_chromatic_shape()
 
         self.assertEqual("Chromatic", shape.tonality)
+
+    def test_make_chromatic_shape_sets_default_root_note(self):
+        shape = make_chromatic_shape()
+
+        self.assertEqual("", shape.root_note)
+
+    def test_make_chromatic_shape_sets_default_quantity(self):
+        shape = make_chromatic_shape()
+
+        self.assertEqual(1, len(shape.positions))
+
+    def test_make_chromatic_shape_sets_default_start_fret(self):
+        shape = make_chromatic_shape()
+
+        self.assertEqual(1, shape.positions[0].fret)
+
+    def test_make_chromatic_shape_sets_default_guitar_string(self):
+        shape = make_chromatic_shape()
+
+        self.assertEqual(1, shape.positions[0].guitar_string)
