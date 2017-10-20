@@ -75,9 +75,7 @@ def repeat_first(positions: List[Position], sequence_length: int = None):
         sequence_length = (len(positions) - 1) * 2
 
     first_position = positions.pop(0)
-
-    half_length = int(sequence_length / 2)
-    positions = resize_sequence(positions, half_length)
+    positions = resize_sequence(positions, int(sequence_length / 2))
 
     updated_positions = []
 
