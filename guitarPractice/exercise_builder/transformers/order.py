@@ -68,3 +68,24 @@ def asc_and_desc_skip(positions: List[Position], sequence_length: int = None):
     last_notes = asc_and_desc(positions, sequence_length - 1)
 
     return first_note + last_notes
+
+
+def repeat_first(positions: List[Position], sequence_length: int = None):
+    if sequence_length is None:
+        sequence_length = (len(positions) - 1) * 2
+
+    first_position = positions.pop(0)
+
+    half_length = int(sequence_length / 2)
+    positions = resize_sequence(positions, half_length)
+
+    updated_positions = []
+
+    for position in positions:
+        updated_positions.append(first_position)
+        updated_positions.append(position)
+
+    if sequence_length % 2 == 1:
+        updated_positions.append(first_position)
+
+    return updated_positions
