@@ -1,10 +1,11 @@
-from guitarPractice.exercises import arpeggio_picking, chord_changes
+from guitarPractice.exercises import arpeggio_picking, chord_changes, dexterity
 
 
 def make_exercise(exercise_name, difficulty):
     exercises = {
         'arpeggio-picking': arpeggio_picking_levels(),
-        'chord-changes': chords_changes_levels()
+        'chord-changes': chords_changes_levels(),
+        'dexterity': dexterity_levels(),
     }
 
     try:
@@ -25,4 +26,10 @@ def arpeggio_picking_levels():
 def chords_changes_levels():
     return {
         1: chord_changes.level_one
+    }
+
+
+def dexterity_levels():
+    return {
+        1: dexterity.level_one
     }

@@ -29,6 +29,14 @@ class TestExercises(TestCase):
         mock.assert_called_once()
         self.assertEqual(exercise, 'this is the exercise')
 
+    @patch('guitarPractice.exercises.dexterity.level_one')
+    def test_make_exercise_returns_chord_changes_exercise_level_one(self, mock):
+        mock.return_value = 'this is the exercise'
+        exercise = make_exercise('dexterity', 1)
+
+        mock.assert_called_once()
+        self.assertEqual(exercise, 'this is the exercise')
+
     def test_make_exercise_returns_exception_for_invalid_exercise_name(self):
         with self.assertRaises(ValueError):
             make_exercise('spooky-skeletons', 1)
