@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from guitarPractice.exercise_builder.transformers.fret_shift import move_frets, spread_frets
+from guitarPractice.exercise_builder.transformers.fret import move_frets, spread_frets
 from guitarPractice.guitar_shapes.position import Position
 
 
