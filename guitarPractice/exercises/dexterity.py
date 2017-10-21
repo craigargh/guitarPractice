@@ -32,6 +32,7 @@ def level_one():
         .transform(order_transformer) \
         .transform(transformer) \
         .transform(fret_shifter) \
+        .display_modified_shapes(True) \
         .build()
 
     return exercise
