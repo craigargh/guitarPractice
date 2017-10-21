@@ -23,3 +23,29 @@ def alternate(positions: List[Position], max_string, alternate_value):
             position.guitar_string += 1
 
     return positions
+
+
+def spread_left(positions: List[Position], max_string: int = 6):
+    return spread(positions, max_string, 1)
+
+
+def spread_right(positions: List[Position], max_string: int = 6):
+    return spread(positions, max_string, -1)
+
+
+def spread(positions, max_string, start_direction):
+    direction = start_direction
+    index = positions[0].guitar_string
+
+    for position in positions:
+        position.guitar_string = index
+
+        if index >= max_string:
+            direction = -1
+        if index == 1:
+            index = 1
+            direction = 1
+
+        index += direction
+
+    return positions
