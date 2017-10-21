@@ -12,4 +12,5 @@ class TestDexterity(TestCase):
     def test_dexterity_exercise_has_four_sequence_positions(self):
         exercise = level_one()
 
-        self.assertEqual(4, len(exercise.sequence))
+        self.assertGreaterEqual(6, len(exercise.sequence))
+        self.assertLessEqual(4, len(exercise.sequence))
