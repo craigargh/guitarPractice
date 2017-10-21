@@ -10,11 +10,19 @@ def ascending(positions: List[Position], sequence_length: int = None):
     return sequence
 
 
+def descending(positions: List[Position], sequence_length: int = None):
+    positions.reverse()
+    positions = resize_sequence(positions, sequence_length)
+
+    return positions
+
+
 def asc_and_desc(positions: List[Position], sequence_length: int = None):
     asc_length, desc_length = calculate_asc_desc_sequence_length(positions, sequence_length)
 
     asc_sequence = positions[:asc_length]
-    desc_sequence = list(reversed(positions[-desc_length:]))
+    desc_sequence = positions[-desc_length:]
+    desc_sequence.reverse()
 
     sequence = asc_sequence + desc_sequence
 

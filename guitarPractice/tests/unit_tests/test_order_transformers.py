@@ -4,7 +4,10 @@ from guitarPractice.exercise_builder.transformers.order import (
     ascending,
     asc_and_desc,
     ascending_skip,
-    asc_and_desc_skip, repeat_first)
+    asc_and_desc_skip,
+    repeat_first,
+    descending
+)
 
 
 class TestAscendingTransformer(TestCase):
@@ -37,6 +40,38 @@ class TestAscendingTransformer(TestCase):
 
         self.assertEqual(len(note_sequence), 12)
         self.assertEqual([1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4], note_sequence)
+
+
+class TestDescendingTransformer(TestCase):
+    def test_ascending_transformer_returns_notes_in_descending_order(self):
+        note_sequence = descending([1, 2, 3, 4, 5])
+
+        self.assertEqual(5, len(note_sequence))
+        self.assertEqual([5, 4, 3, 2, 1], note_sequence)
+
+    def test_descending_transformer_can_shorten_sequence_when_length_value_is_set(self):
+        note_sequence = descending([1, 2, 3, 4, 5], sequence_length=3)
+
+        self.assertEqual(3, len(note_sequence))
+        self.assertEqual([5, 4, 3], note_sequence)
+
+    def test_descending_transformer_will_repeat_notes_if_length_is_greater_than_shape_length(self):
+        note_sequence = descending([1, 2, 3, 4, 5], sequence_length=8)
+
+        self.assertEqual(8, len(note_sequence))
+        self.assertEqual([5, 4, 3, 2, 1, 3, 2, 1], note_sequence)
+
+    def test_descending_transformer_will_repeat_notes_if_length_is_greater_than_double_shape_length(self):
+        note_sequence = descending([1, 2, 3, 4, 5], sequence_length=13)
+
+        self.assertEqual(13, len(note_sequence))
+        self.assertEqual([5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 3, 2, 1], note_sequence)
+
+    def test_descending_transformer_will_repeat_notes_when_length_is_multiple_of_shape_length(self):
+        note_sequence = descending([1, 2, 3, 4], sequence_length=12)
+
+        self.assertEqual(len(note_sequence), 12)
+        self.assertEqual([4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1], note_sequence)
 
 
 class TestAscendingAndDescendingTransformer(TestCase):
