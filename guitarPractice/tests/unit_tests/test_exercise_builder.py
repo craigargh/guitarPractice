@@ -62,3 +62,14 @@ class TestExerciseBuilder(TestCase):
             ExerciseBuilder() \
                 .set_sequencer("sequencer") \
                 .set_sequencer("again")
+
+    def test_can_set_display_modified_shapes(self):
+        builder = ExerciseBuilder() \
+            .display_modified_shapes(True)
+
+        self.assertEqual(True, builder._display_modified_shapes)
+
+    def test_can_set_display_modified_shapes_defaults_to_false(self):
+        builder = ExerciseBuilder()
+
+        self.assertEqual(False, builder._display_modified_shapes)

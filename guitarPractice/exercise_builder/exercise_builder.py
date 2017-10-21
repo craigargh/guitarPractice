@@ -11,6 +11,7 @@ class ExerciseBuilder:
         self.sequencer = None
 
         self.transformers = []
+        self._display_modified_shapes = False
 
     def set_shapes(self, shapes):
         if self.shapes is not None:
@@ -36,6 +37,11 @@ class ExerciseBuilder:
             raise AttributeError("Can only set sequencer once")
 
         self.sequencer = sequencer
+        return self
+
+    def display_modified_shapes(self, display):
+        self._display_modified_shapes = display
+
         return self
 
     def build(self):
