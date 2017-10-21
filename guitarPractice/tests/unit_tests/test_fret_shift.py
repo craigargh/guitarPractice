@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from guitarPractice.exercise_builder.transformers.fret_shift import move_frets
+from guitarPractice.exercise_builder.transformers.fret_shift import move_frets, spread_frets
 from guitarPractice.guitar_shapes.position import Position
 
 
@@ -58,3 +58,50 @@ class TestMoveFrets(TestCase):
         self.assertEqual(12, moved_positions[1].fret)
         self.assertEqual(10, moved_positions[2].fret)
         self.assertEqual(13, moved_positions[3].fret)
+
+
+class TestSpreadFrets(TestCase):
+    def test_spread_frets_adds_frets_between_positions(self):
+        positions = [
+            Position(guitar_string=1, fret=1),
+            Position(guitar_string=1, fret=2),
+            Position(guitar_string=1, fret=3),
+            Position(guitar_string=1, fret=4),
+        ]
+
+        moved_positions = spread_frets(positions)
+
+        self.assertEqual(1, moved_positions[0].fret)
+        self.assertEqual(3, moved_positions[1].fret)
+        self.assertEqual(5, moved_positions[2].fret)
+        self.assertEqual(7, moved_positions[3].fret)
+
+    def test_spread_frets_can_set_spacing(self):
+        positions = [
+            Position(guitar_string=1, fret=1),
+            Position(guitar_string=1, fret=2),
+            Position(guitar_string=1, fret=3),
+            Position(guitar_string=1, fret=4),
+        ]
+
+        moved_positions = spread_frets(positions, 2)
+
+        self.assertEqual(1, moved_positions[0].fret)
+        self.assertEqual(4, moved_positions[1].fret)
+        self.assertEqual(7, moved_positions[2].fret)
+        self.assertEqual(10, moved_positions[3].fret)
+
+    def test_spread_frets_can_set_out_of_order_positions(self):
+        positions = [
+            Position(guitar_string=1, fret=2),
+            Position(guitar_string=1, fret=3),
+            Position(guitar_string=1, fret=1),
+            Position(guitar_string=1, fret=4),
+        ]
+
+        moved_positions = spread_frets(positions)
+
+        self.assertEqual(3, moved_positions[0].fret)
+        self.assertEqual(5, moved_positions[1].fret)
+        self.assertEqual(1, moved_positions[2].fret)
+        self.assertEqual(7, moved_positions[3].fret)
