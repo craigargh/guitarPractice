@@ -195,3 +195,26 @@ class TestExerciseBuilderBuild(TestCase):
         self.assertEqual(2, len(inside_shapes))
         self.assertIsNot(inside_shapes[0], sequenced_shapes[0])
 
+    def test_display_modified_shapes_returns_shapes_after_transformations(self):
+        def increase_guitar_string(position):
+            position.guitar_string += 1
+            return position
+
+        add_one_to_each = partial(map, increase_guitar_string)
+
+        exercise = ExerciseBuilder() \
+            .set_shapes(self.shapes) \
+            .transform(add_one_to_each) \
+            .display_modified_shapes(True) \
+            .build()
+
+        self.assertEqual(2, exercise.shapes[0].positions[0].guitar_string)
+        self.assertEqual(3, exercise.shapes[0].positions[1].guitar_string)
+        self.assertEqual(4, exercise.shapes[0].positions[2].guitar_string)
+        self.assertEqual(5, exercise.shapes[0].positions[3].guitar_string)
+
+        self.assertEqual(6, exercise.shapes[1].positions[0].guitar_string)
+        self.assertEqual(7, exercise.shapes[1].positions[1].guitar_string)
+        self.assertEqual(8, exercise.shapes[1].positions[2].guitar_string)
+        self.assertEqual(9, exercise.shapes[1].positions[3].guitar_string)
+

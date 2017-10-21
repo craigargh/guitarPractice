@@ -45,14 +45,18 @@ class ExerciseBuilder:
         return self
 
     def build(self):
-        shapes = self._try_get_shapes()
-        shapes = self._apply_sequencer(shapes, self.sequencer)
-        shapes = self._apply_transformations(shapes, self.transformers)
-        shapes = self._set_order_of_positions(shapes)
+        modified_shapes = self._try_get_shapes()
+        modified_shapes = self._apply_sequencer(modified_shapes, self.sequencer)
+        modified_shapes = self._apply_transformations(modified_shapes, self.transformers)
+        modified_shapes = self._set_order_of_positions(modified_shapes)
 
-        sequence = list(self._combine_sequences(shapes))
+        sequence = list(self._combine_sequences(modified_shapes))
 
-        return Exercise(shapes=self.shapes, sequence=sequence)
+        shapes = self.shapes
+        if self._display_modified_shapes:
+            shapes = modified_shapes
+
+        return Exercise(shapes=shapes, sequence=sequence)
 
     def _try_get_shapes(self):
         try:
