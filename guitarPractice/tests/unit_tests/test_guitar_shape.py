@@ -164,3 +164,25 @@ class GuitarShapeTest(TestCase):
         shape = GuitarShape('C', 'major', positions)
 
         self.assertFalse(shape.is_chord)
+
+    def test_is_shiftable_is_true_when_no_open_strings(self):
+        positions = [
+            Position(guitar_string=6, fret=1),
+            Position(guitar_string=6, fret=2),
+            Position(guitar_string=6, fret=3),
+        ]
+
+        shape = GuitarShape('C', 'Major', positions)
+
+        self.assertTrue(shape.is_shiftable)
+
+    def test_is_shiftable_is_false_when_open_strings(self):
+        positions = [
+            Position(guitar_string=6, fret=0),
+            Position(guitar_string=6, fret=2),
+            Position(guitar_string=6, fret=3),
+        ]
+
+        shape = GuitarShape('C', 'Major', positions)
+
+        self.assertFalse(shape.is_shiftable)

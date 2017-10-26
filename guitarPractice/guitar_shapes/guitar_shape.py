@@ -56,6 +56,10 @@ class GuitarShape:
 
         return are_all_strings_unique
 
+    @property
+    def is_shiftable(self):
+        return all(position.fret != 0 for position in self.positions)
+
     def transform(self, transformer):
         transformed_shape = copy.deepcopy(self)
         positions = [
