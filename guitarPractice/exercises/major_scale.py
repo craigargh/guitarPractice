@@ -35,6 +35,7 @@ def level_one_variation_two():
     exercise = ExerciseBuilder() \
         .set_shapes(selected_modes) \
         .transform(restrict_length) \
+        .display_modified_shapes(True) \
         .build()
 
     return exercise
