@@ -37,6 +37,14 @@ class TestExercises(TestCase):
         mock.assert_called_once()
         self.assertEqual(exercise, 'this is the exercise')
 
+    @patch('guitarPractice.exercises.major_scale.level_one')
+    def test_make_exercise_returns_major_scale_level_one(self, mock):
+        mock.return_value = 'major scale exercise'
+        exercise = make_exercise('major-scale', 1)
+
+        mock.assert_called_once()
+        self.assertEqual(exercise, 'major scale exercise')
+
     def test_make_exercise_returns_exception_for_invalid_exercise_name(self):
         with self.assertRaises(ValueError):
             make_exercise('spooky-skeletons', 1)
