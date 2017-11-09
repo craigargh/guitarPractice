@@ -19,18 +19,17 @@ def get_root_note(guitar_shape):
 def get_alternate_root_note(guitar_shape):
     root_guitar_string = get_lowest_string(guitar_shape)
 
-    found = False
+    alternate_root = None
     possible_strings = range(1, root_guitar_string)
 
     for possible_string in reversed(possible_strings):
         try:
             alternate_root = get_guitar_string_note(guitar_shape, possible_string)
-            found = True
             break
         except ValueError:
             pass
 
-    if not found:
+    if alternate_root is None:
         raise ValueError('Could not find alternate root note')
 
     return alternate_root
