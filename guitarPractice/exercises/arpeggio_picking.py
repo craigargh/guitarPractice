@@ -1,10 +1,13 @@
+from functools import partial
 from random import sample, choice, randrange
 
 from guitarPractice.exercise_builder.transformers import order
 from guitarPractice.exercise_builder.exercise_builder import ExerciseBuilder
 from guitarPractice.exercise_builder.transformers import random_order
+from guitarPractice.exercise_builder.transformers.pick_pattern import get_notes_from_pick_pattern
 from guitarPractice.exercises.exercise_utils import choose_transformer
 from guitarPractice.guitar_shapes.chord_collections import c_major_scale_triad_chords, c_major_scale_seven_chords
+from guitarPractice.guitar_shapes.pick_patterns import pick_pattern_collection_one
 
 
 def level_one():
@@ -41,7 +44,7 @@ def level_two():
     version = randrange(2)
     if version == 1:
         chords = get_level_one_chords(2)
-        transformer = get_randomised_transformer()
+        transformer = get_pick_pattern()
     else:
         chords = get_level_two_chords(4)
         transformer = get_level_one_transformer()
@@ -59,14 +62,8 @@ def get_level_two_chords(quantity):
     return sample(all_chords, quantity)
 
 
-def get_randomised_transformer():
-    notes_per_arpeggio = choice([4, 6])
+def get_pick_pattern():
+    patterns = pick_pattern_collection_one()
+    pattern = choice(patterns)
 
-    random_transformers = [
-        random_order.make_consistent_steps(notes_per_arpeggio),
-        random_order.make_root_and_consistent_steps(notes_per_arpeggio),
-        random_order.make_consistent_strings(notes_per_arpeggio),
-        random_order.make_root_and_consistent_strings(notes_per_arpeggio),
-    ]
-
-    return choose_transformer(random_transformers, notes_per_arpeggio)
+    return partial(get_notes_from_pick_pattern, pick_pattern=pattern)

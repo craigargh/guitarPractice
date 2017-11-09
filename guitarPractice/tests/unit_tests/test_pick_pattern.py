@@ -7,7 +7,7 @@ from guitarPractice.guitar_shapes.position import Position
 
 class TestPickPattern(TestCase):
     def setUp(self):
-        positions = [
+        self.six_string_shape = [
             Position(guitar_string=6, fret=3, finger=2, is_highlighted=True),
             Position(guitar_string=5, fret=2, finger=1),
             Position(guitar_string=4),
@@ -16,9 +16,7 @@ class TestPickPattern(TestCase):
             Position(guitar_string=1, fret=3, finger=3, is_highlighted=True),
         ]
 
-        self.six_string_shape = GuitarShape('G', 'Major', positions)
-
-        positions_without_string_5 = [
+        self.shortened_shape = [
             Position(guitar_string=6, fret=3, finger=2, is_highlighted=True),
             Position(guitar_string=4),
             Position(guitar_string=3, is_highlighted=True),
@@ -26,13 +24,9 @@ class TestPickPattern(TestCase):
             Position(guitar_string=1, fret=3, finger=3, is_highlighted=True),
         ]
 
-        self.shortened_shape = GuitarShape('G', 'Major', positions_without_string_5)
-
-        single_note = [
+        self.single_note_shape = [
             Position(guitar_string=6, fret=3, finger=2, is_highlighted=True),
         ]
-
-        self.single_note_shape = GuitarShape('G', 'Major', single_note)
 
     def test_can_get_note_on_string_one(self):
         note = pick_pattern.get_guitar_string_note(self.six_string_shape, 1)
