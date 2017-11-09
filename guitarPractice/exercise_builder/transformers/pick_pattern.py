@@ -1,3 +1,19 @@
+def get_notes_from_pick_pattern(guitar_shape, pick_pattern):
+    notes = []
+
+    for guitar_string in pick_pattern:
+        if guitar_string == 'r':
+            note = get_root_note(guitar_shape)
+        elif guitar_string == 'a':
+            note = get_alternate_root_note(guitar_shape)
+        else:
+            note = get_guitar_string_note(guitar_shape, guitar_string)
+
+        notes.append(note)
+
+    return notes
+
+
 def get_guitar_string_note(guitar_shape, guitar_string):
     positions = [
         position

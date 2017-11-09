@@ -86,3 +86,33 @@ class TestPickPattern(TestCase):
     def test_get_alternate_root_note_raises_error_if_not_found(self):
         with self.assertRaises(ValueError):
             pick_pattern.get_alternate_root_note(self.single_note_shape)
+
+    def test_pick_pattern_works_with_string_numbers(self):
+        pattern = [6, 3, 4, 2]
+
+        notes = pick_pattern.get_notes_from_pick_pattern(self.six_string_shape, pattern)
+
+        self.assertEqual(notes[0].guitar_string, 6)
+        self.assertEqual(notes[1].guitar_string, 3)
+        self.assertEqual(notes[2].guitar_string, 4)
+        self.assertEqual(notes[3].guitar_string, 2)
+
+    def test_pick_pattern_works_with_root_note_symbol(self):
+        pattern = ['r', 1, 'r', 2]
+
+        notes = pick_pattern.get_notes_from_pick_pattern(self.six_string_shape, pattern)
+
+        self.assertEqual(notes[0].guitar_string, 6)
+        self.assertEqual(notes[1].guitar_string, 1)
+        self.assertEqual(notes[2].guitar_string, 6)
+        self.assertEqual(notes[3].guitar_string, 2)
+
+    def test_pick_pattern_works_with_alternate_root_note_symbol(self):
+        pattern = ['a', 3, 'a', 4]
+
+        notes = pick_pattern.get_notes_from_pick_pattern(self.six_string_shape, pattern)
+
+        self.assertEqual(notes[0].guitar_string, 5)
+        self.assertEqual(notes[1].guitar_string, 3)
+        self.assertEqual(notes[2].guitar_string, 5)
+        self.assertEqual(notes[3].guitar_string, 4)
