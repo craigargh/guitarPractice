@@ -1,7 +1,6 @@
 from unittest import TestCase
 
 from guitarPractice.exercise_builder.transformers import pick_pattern
-from guitarPractice.guitar_shapes.guitar_shape import GuitarShape
 from guitarPractice.guitar_shapes.position import Position
 
 
