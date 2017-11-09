@@ -59,7 +59,7 @@ class TestRhythmArpeggios(TestCase):
     def test_level_two_sequence_contains_between_eight_and_thirty_two_positions(self):
         exercise = level_two()
 
-        self.assertGreaterEqual(len(exercise.sequence), 8)
+        self.assertGreaterEqual(len(exercise.sequence), 16)
         self.assertLessEqual(len(exercise.sequence), 32)
 
     def test_level_two_sequence_has_no_two_positions_with_the_same_order(self):
