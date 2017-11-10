@@ -43,7 +43,7 @@ def get_level_one_transformer():
 def level_two():
     version = randrange(2)
     if version == 1:
-        chords = get_level_one_chords(2)
+        chords = get_level_two_chords(2)
         transformer = get_pick_pattern()
     else:
         chords = get_level_two_chords(4)
