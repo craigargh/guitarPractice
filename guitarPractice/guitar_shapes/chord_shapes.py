@@ -177,7 +177,7 @@ def g_major_add_9() -> GuitarShape:
         Position(guitar_string=4),
         Position(guitar_string=3, fret=2, finger=1),
         Position(guitar_string=2),
-        Position(guitar_string=1, fret=3, finger=3, is_highlighted=True),
+        Position(guitar_string=1, fret=3, finger=4, is_highlighted=True),
     ]
 
     return GuitarShape('G', 'Major add 9', positions)
