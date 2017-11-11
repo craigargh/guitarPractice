@@ -143,3 +143,10 @@ class TestChordShapes(TestCase):
         self.assertEqual(chord.name, 'B Minor 7 Flat 5')
         self.assertTrue(chord.is_chord)
         self.assertEqual(len(chord.positions), 4)
+
+    def test_b_diminished(self):
+        chord = chord_shapes.b_diminished_flat_9()
+
+        self.assertEqual(chord.name, 'B Diminished flat 9')
+        self.assertTrue(chord.is_chord)
+        self.assertEqual(len(chord.positions), 4)

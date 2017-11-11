@@ -41,4 +41,5 @@ def c_major_scale_add_9_chords() -> List[GuitarShape]:
         chord_shapes.f_major_add_9(),
         chord_shapes.g_major_add_9(),
         chord_shapes.a_minor_add_9(),
+        chord_shapes.b_diminished_flat_9(),
     ]

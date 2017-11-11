@@ -223,7 +223,7 @@ def b_diminished() -> GuitarShape:
     positions = [
         Position(guitar_string=4),
         Position(guitar_string=3, fret=4, finger=4, is_highlighted=True),
-        Position(guitar_string=2),
+        Position(guitar_string=2, is_highlighted=True),
         Position(guitar_string=1, fret=1, finger=1),
     ]
 
@@ -233,9 +233,20 @@ def b_diminished() -> GuitarShape:
 def b_minor_seven_flat_five() -> GuitarShape:
     positions = [
         Position(guitar_string=4),
-        Position(guitar_string=3, fret=2, finger=2, is_highlighted=True),
-        Position(guitar_string=2),
+        Position(guitar_string=3, fret=2, finger=2),
+        Position(guitar_string=2, is_highlighted=True),
         Position(guitar_string=1, fret=1, finger=1),
     ]
 
     return GuitarShape('B', 'Minor 7 Flat 5', positions)
+
+
+def b_diminished_flat_9() -> GuitarShape:
+    positions = [
+        Position(guitar_string=4),
+        Position(guitar_string=3, fret=4, finger=4, is_highlighted=True),
+        Position(guitar_string=2, fret=1, finger=1),
+        Position(guitar_string=1, fret=1, finger=1),
+    ]
+
+    return GuitarShape('B', 'Diminished flat 9', positions)

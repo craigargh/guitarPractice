@@ -66,8 +66,8 @@ class TestCMajorAdd9(TestCase):
     def setUp(self):
         self.chords = c_major_scale_add_9_chords()
 
-    def test_collection_contains_six_chords(self):
-        self.assertEqual(len(self.chords), 6)
+    def test_collection_contains_seven_chords(self):
+        self.assertEqual(len(self.chords), 7)
 
     def test_first_chord_is_c_major_add_9(self):
         self.assertEqual(self.chords[0].name, 'C Major add 9')
@@ -86,3 +86,6 @@ class TestCMajorAdd9(TestCase):
 
     def test_sixth_chord_is_a_minor_add_9(self):
         self.assertEqual(self.chords[5].name, 'A Minor add 9')
+
+    def test_seventh_chord_is_b_diminished(self):
+        self.assertEqual(self.chords[6].name, 'B Diminished flat 9')
