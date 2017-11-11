@@ -18,6 +18,13 @@ class TestChordShapes(TestCase):
         self.assertTrue(chord.is_chord)
         self.assertEqual(len(chord.positions), 5)
 
+    def test_c_major_add_9(self):
+        chord = chord_shapes.c_major_add_9()
+
+        self.assertEqual(chord.name, 'C Major add 9')
+        self.assertTrue(chord.is_chord)
+        self.assertEqual(len(chord.positions), 5)
+
     def test_d_minor(self):
         chord = chord_shapes.d_minor()
 
@@ -29,6 +36,13 @@ class TestChordShapes(TestCase):
         chord = chord_shapes.d_minor_seven()
 
         self.assertEqual(chord.name, 'D Minor 7')
+        self.assertTrue(chord.is_chord)
+        self.assertEqual(len(chord.positions), 4)
+
+    def test_d_minor_add_9(self):
+        chord = chord_shapes.d_minor_add_9()
+
+        self.assertEqual(chord.name, 'D Minor add 9')
         self.assertTrue(chord.is_chord)
         self.assertEqual(len(chord.positions), 4)
 
@@ -46,6 +60,13 @@ class TestChordShapes(TestCase):
         self.assertTrue(chord.is_chord)
         self.assertEqual(len(chord.positions), 6)
 
+    def test_e_minor_flat_9(self):
+        chord = chord_shapes.e_minor_flat_nine()
+
+        self.assertEqual(chord.name, 'E Minor flat 9')
+        self.assertTrue(chord.is_chord)
+        self.assertEqual(len(chord.positions), 6)
+
     def test_f_major(self):
         chord = chord_shapes.f_major()
 
@@ -57,6 +78,13 @@ class TestChordShapes(TestCase):
         chord = chord_shapes.f_major_seven()
 
         self.assertEqual(chord.name, 'F Major 7')
+        self.assertTrue(chord.is_chord)
+        self.assertEqual(len(chord.positions), 4)
+
+    def test_f_major_add_9(self):
+        chord = chord_shapes.f_major_add_9()
+
+        self.assertEqual(chord.name, 'F Major add 9')
         self.assertTrue(chord.is_chord)
         self.assertEqual(len(chord.positions), 4)
 
@@ -74,6 +102,13 @@ class TestChordShapes(TestCase):
         self.assertTrue(chord.is_chord)
         self.assertEqual(len(chord.positions), 6)
 
+    def test_g_major_add_9(self):
+        chord = chord_shapes.g_major_add_9()
+
+        self.assertEqual(chord.name, 'G Major add 9')
+        self.assertTrue(chord.is_chord)
+        self.assertEqual(len(chord.positions), 6)
+
     def test_a_minor(self):
         chord = chord_shapes.a_minor()
 
@@ -85,6 +120,13 @@ class TestChordShapes(TestCase):
         chord = chord_shapes.a_minor_seven()
 
         self.assertEqual(chord.name, 'A Minor 7')
+        self.assertTrue(chord.is_chord)
+        self.assertEqual(len(chord.positions), 5)
+
+    def test_a_minor_add_nine(self):
+        chord = chord_shapes.a_minor_add_9()
+
+        self.assertEqual(chord.name, 'A Minor add 9')
         self.assertTrue(chord.is_chord)
         self.assertEqual(len(chord.positions), 5)
 
