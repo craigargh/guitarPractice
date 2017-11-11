@@ -31,3 +31,14 @@ def c_major_scale_seven_chords() -> List[GuitarShape]:
         chord_shapes.a_minor_seven(),
         chord_shapes.b_minor_seven_flat_five(),
     ]
+
+
+def c_major_scale_add_9_chords() -> List[GuitarShape]:
+    return [
+        chord_shapes.c_major_add_9(),
+        chord_shapes.d_minor_add_9(),
+        chord_shapes.e_minor_flat_nine(),
+        chord_shapes.f_major_add_9(),
+        chord_shapes.g_major_add_9(),
+        chord_shapes.a_minor_add_9(),
+    ]

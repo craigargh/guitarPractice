@@ -1,6 +1,7 @@
 from unittest import TestCase
 
-from guitarPractice.guitar_shapes.chord_collections import c_major_scale_triad_chords, c_major_scale_seven_chords
+from guitarPractice.guitar_shapes.chord_collections import c_major_scale_triad_chords, c_major_scale_seven_chords, \
+    c_major_scale_add_9_chords
 
 
 class TestCMajorTriads(TestCase):
@@ -59,3 +60,29 @@ class TestCMajorSeventh(TestCase):
 
     def test_seventh_chord_is_b_minor_7_flat_5(self):
         self.assertEqual(self.chords[6].name, 'B Minor 7 Flat 5')
+
+
+class TestCMajorAdd9(TestCase):
+    def setUp(self):
+        self.chords = c_major_scale_add_9_chords()
+
+    def test_collection_contains_six_chords(self):
+        self.assertEqual(len(self.chords), 6)
+
+    def test_first_chord_is_c_major_add_9(self):
+        self.assertEqual(self.chords[0].name, 'C Major add 9')
+
+    def test_second_chord_is_d_minor_add_9(self):
+        self.assertEqual(self.chords[1].name, 'D Minor add 9')
+
+    def test_third_chord_is_e_minor_add_9(self):
+        self.assertEqual(self.chords[2].name, 'E Minor flat 9')
+
+    def test_fourth_chord_is_f_major_add_9(self):
+        self.assertEqual(self.chords[3].name, 'F Major add 9')
+
+    def test_fifth_chord_is_g_add_9(self):
+        self.assertEqual(self.chords[4].name, 'G Major add 9')
+
+    def test_sixth_chord_is_a_minor_add_9(self):
+        self.assertEqual(self.chords[5].name, 'A Minor add 9')
