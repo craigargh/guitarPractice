@@ -20,5 +20,3 @@ class Position:
         same_finger = self.finger == other.finger
 
         return same_string and same_fret and same_finger
-
-# TODO: Add label/annotation to Position to output shape name for chord changes when printing a sequence

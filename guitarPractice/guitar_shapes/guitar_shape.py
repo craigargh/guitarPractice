@@ -75,6 +75,3 @@ class GuitarShape:
         ]
 
         return transformed_shape
-
-# TODO: Add property that converts full name into abbreviation e.g. C Major 7 to Cmaj7
-# TODO: Add constants for voicings e.g. MAJOR for 'Major', MAJOR_7 for 'Major 7'
