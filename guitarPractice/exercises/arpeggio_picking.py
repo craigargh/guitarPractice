@@ -6,7 +6,8 @@ from guitarPractice.exercise_builder.exercise_builder import ExerciseBuilder
 from guitarPractice.exercise_builder.transformers import random_order
 from guitarPractice.exercise_builder.transformers.pick_pattern import get_notes_from_pick_pattern
 from guitarPractice.exercises.exercise_utils import choose_transformer
-from guitarPractice.guitar_shapes.chord_collections import c_major_scale_triad_chords, c_major_scale_seven_chords
+from guitarPractice.guitar_shapes.chord_collections import c_major_scale_triad_chords, c_major_scale_seven_chords, \
+    c_major_scale_add_9_chords
 from guitarPractice.guitar_shapes.pick_patterns import pick_pattern_collection_one
 
 
@@ -58,7 +59,10 @@ def level_two():
 
 
 def get_level_two_chords(quantity):
-    all_chords = c_major_scale_triad_chords() + c_major_scale_seven_chords()
+    all_chords = c_major_scale_triad_chords() + \
+                 c_major_scale_seven_chords() + \
+                 c_major_scale_add_9_chords()
+
     return sample(all_chords, quantity)
 
 
