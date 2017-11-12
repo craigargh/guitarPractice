@@ -1,10 +1,14 @@
+ROOT = 'r'
+ALTERNATE_ROOT = 'a'
+
+
 def get_notes_from_pick_pattern(positions, pick_pattern):
     notes = []
 
     for guitar_string in pick_pattern:
-        if guitar_string == 'r':
+        if guitar_string == ROOT:
             note = get_root_note(positions)
-        elif guitar_string == 'a':
+        elif guitar_string == ALTERNATE_ROOT:
             note = get_alternate_root_note(positions)
         else:
             note = get_guitar_string_note(positions, guitar_string)

@@ -1,5 +1,7 @@
-r = 'r'  # root
-a = 'a'  # alternate root
+from guitarPractice.exercise_builder.transformers.pick_pattern import ROOT, ALTERNATE_ROOT
+
+r = ROOT
+a = ALTERNATE_ROOT
 
 pattern_one = [r, 1, 2, 1, 2, 1, 2, 1]
 pattern_two = [r, 1, 2, 1, a, 1, 2, 1]
