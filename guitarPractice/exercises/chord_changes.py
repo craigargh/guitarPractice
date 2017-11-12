@@ -1,9 +1,10 @@
 from functools import partial
-from random import sample
+from random import sample, choice
 
 from guitarPractice.exercise_builder.exercise_builder import ExerciseBuilder
-from guitarPractice.exercise_builder.sequencers import repeat_shapes
-from guitarPractice.guitar_shapes.chord_collections import c_major_scale_triad_chords
+from guitarPractice.exercise_builder.sequencers import repeat_shapes, repeat_first_shape_sequencer
+from guitarPractice.guitar_shapes.chord_collections import c_major_scale_triad_chords, c_major_scale_seven_chords, \
+    c_major_scale_add_9_chords
 
 
 def level_one():
@@ -24,4 +25,41 @@ def level_one():
 
 def get_level_one_chords(quantity):
     all_chords = c_major_scale_triad_chords()
+    return sample(all_chords, quantity)
+
+
+def level_two():
+    variation = choice([level_two_variation_1, level_two_variation_2])
+
+    return variation()
+
+
+def level_two_variation_1():
+    chords = get_level_two_chords(3)
+
+    for chord in chords:
+        chord.is_strummed = True
+
+    return ExerciseBuilder() \
+        .set_shapes(chords) \
+        .transform(repeat_first_shape_sequencer) \
+        .build()
+
+
+def level_two_variation_2():
+    chords = get_level_two_chords(4)
+
+    for chord in chords:
+        chord.is_strummed = True
+
+    return ExerciseBuilder() \
+        .set_shapes(chords) \
+        .build()
+
+
+def get_level_two_chords(quantity):
+    all_chords = c_major_scale_triad_chords() + \
+                 c_major_scale_seven_chords() + \
+                 c_major_scale_add_9_chords()
+
     return sample(all_chords, quantity)

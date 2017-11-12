@@ -2,7 +2,7 @@ from collections import Counter
 from unittest import TestCase
 
 from guitarPractice.exercise_builder.exercise import Exercise
-from guitarPractice.exercises.chord_changes import level_one
+from guitarPractice.exercises.chord_changes import level_one, level_two
 
 
 class TestChordChanges(TestCase):
@@ -39,3 +39,25 @@ class TestChordChanges(TestCase):
         )
 
         self.assertTrue(are_all_order_values_unique)
+
+    def test_level_two_returns_an_exercise(self):
+        exercise = level_two()
+
+        self.assertTrue(type(exercise) is Exercise)
+
+    def test_level_two_exercise_contains_at_least_three_chords(self):
+        exercise = level_two()
+
+        self.assertGreaterEqual(len(exercise.shapes), 3)
+
+    def test_level_two_exercise_contains_no_more_than_four_chords(self):
+        exercise = level_two()
+
+        self.assertLessEqual(len(exercise.shapes), 4)
+
+    def test_level_two_exercise_has_sixteen_beats(self):
+        exercise = level_two()
+
+        beats = set(position.order for position in exercise.sequence)
+
+        self.assertEqual(len(beats), 16)

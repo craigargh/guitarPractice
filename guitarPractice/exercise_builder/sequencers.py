@@ -8,7 +8,7 @@ def in_order_sequencer(shapes: List[GuitarShape]) -> List[GuitarShape]:
 
 
 def repeat_first_shape_sequencer(shapes) -> List[GuitarShape]:
-    shapes_list = list(shapes)
+    shapes_list = shapes[:]
     first_shape = shapes_list.pop(0)
 
     sequence = []

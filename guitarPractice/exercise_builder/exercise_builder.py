@@ -8,7 +8,7 @@ class ExerciseBuilder:
     def __init__(self):
         self.shapes = None
         self.rhythm = None
-        self.sequencer = None
+        self.sequencers = []
 
         self.transformers = []
         self._display_modified_shapes = False
@@ -33,10 +33,7 @@ class ExerciseBuilder:
         return self
 
     def set_sequencer(self, sequencer):
-        if self.sequencer is not None:
-            raise AttributeError("Can only set sequencer once")
-
-        self.sequencer = sequencer
+        self.sequencers.append(sequencer)
         return self
 
     def display_modified_shapes(self, display):
@@ -46,7 +43,7 @@ class ExerciseBuilder:
 
     def build(self):
         modified_shapes = self._try_get_shapes()
-        modified_shapes = self._apply_sequencer(modified_shapes, self.sequencer)
+        modified_shapes = self._apply_sequencers(modified_shapes, self.sequencers)
         modified_shapes = self._apply_transformations(modified_shapes, self.transformers)
         modified_shapes = self._set_order_of_positions(modified_shapes)
 
@@ -66,8 +63,8 @@ class ExerciseBuilder:
             raise AttributeError("shapes must be set with set_shapes()")
 
     @staticmethod
-    def _apply_sequencer(shapes, sequencer):
-        if not sequencer:
+    def _apply_sequencers(shapes, sequencers):
+        if not sequencers:
             return shapes
 
         copied_shapes = [
@@ -75,11 +72,12 @@ class ExerciseBuilder:
             for shape in shapes
         ]
 
-        sequenced_shapes = sequencer(copied_shapes)
+        for sequencer in sequencers:
+            copied_shapes = sequencer(copied_shapes)
 
         return [
             deepcopy(shape)
-            for shape in sequenced_shapes
+            for shape in copied_shapes
         ]
 
 

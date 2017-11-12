@@ -178,7 +178,7 @@ class TestExerciseBuilderBuild(TestCase):
             inside_shapes.extend(shapes)
             return shapes
 
-        ExerciseBuilder()._apply_sequencer(self.shapes, sequencer)
+        ExerciseBuilder()._apply_sequencers(self.shapes, [sequencer])
 
         self.assertEqual(2, len(inside_shapes))
         self.assertIsNot(inside_shapes[0], self.shapes[0])
@@ -190,7 +190,7 @@ class TestExerciseBuilderBuild(TestCase):
             inside_shapes.extend(shapes)
             return shapes
 
-        sequenced_shapes = ExerciseBuilder()._apply_sequencer(self.shapes, sequencer)
+        sequenced_shapes = ExerciseBuilder()._apply_sequencers(self.shapes, [sequencer])
 
         self.assertEqual(2, len(inside_shapes))
         self.assertIsNot(inside_shapes[0], sequenced_shapes[0])

@@ -55,13 +55,14 @@ class TestExerciseBuilder(TestCase):
         builder = ExerciseBuilder() \
             .set_sequencer("sequencer")
 
-        self.assertEqual(builder.sequencer, "sequencer")
+        self.assertEqual(builder.sequencers, ["sequencer"])
 
-    def test_can_only_set_sequencer_once(self):
-        with self.assertRaises(AttributeError):
-            ExerciseBuilder() \
+    def test_can_set_multiple_sequencers(self):
+        builder = ExerciseBuilder() \
                 .set_sequencer("sequencer") \
                 .set_sequencer("again")
+
+        self.assertEqual(builder.sequencers, ["sequencer", "again"])
 
     def test_can_set_display_modified_shapes(self):
         builder = ExerciseBuilder() \
