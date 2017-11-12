@@ -31,7 +31,8 @@ def arpeggio_picking_levels():
 
 def chords_changes_levels():
     return {
-        1: chord_changes.level_one
+        1: chord_changes.level_one,
+        2: chord_changes.level_two
     }
 
 
