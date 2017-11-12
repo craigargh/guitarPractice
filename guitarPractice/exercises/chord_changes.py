@@ -40,9 +40,12 @@ def level_two_variation_1():
     for chord in chords:
         chord.is_strummed = True
 
+    repeater = partial(repeat_shapes, times=4)
+
     return ExerciseBuilder() \
         .set_shapes(chords) \
-        .transform(repeat_first_shape_sequencer) \
+        .set_sequencer(repeat_first_shape_sequencer) \
+        .set_sequencer(repeater) \
         .build()
 
 
@@ -52,8 +55,11 @@ def level_two_variation_2():
     for chord in chords:
         chord.is_strummed = True
 
+    repeater = partial(repeat_shapes, times=4)
+
     return ExerciseBuilder() \
         .set_shapes(chords) \
+        .set_sequencer(repeater) \
         .build()
 
 
