@@ -6,34 +6,34 @@ from guitarPractice.exercise_builder.exercise import Exercise
 
 class ExerciseBuilder:
     def __init__(self):
-        self.shapes = None
-        self.rhythm = None
-        self.sequencers = []
+        self._shapes = None
+        self._rhythm = None
+        self._sequencers = []
 
-        self.transformers = []
+        self._transformers = []
         self._display_modified_shapes = False
 
     def set_shapes(self, shapes):
-        if self.shapes is not None:
+        if self._shapes is not None:
             raise AttributeError("Can only set the exercises shapes once")
 
-        self.shapes = shapes
+        self._shapes = shapes
         return self
 
     def transform(self, transformer):
-        self.transformers.append(transformer)
+        self._transformers.append(transformer)
 
         return self
 
     def set_rhythm(self, rhythm):
-        if self.rhythm is not None:
+        if self._rhythm is not None:
             raise AttributeError("Can only set the rhythm once")
 
-        self.rhythm = rhythm
+        self._rhythm = rhythm
         return self
 
-    def set_sequencer(self, sequencer):
-        self.sequencers.append(sequencer)
+    def sequence(self, sequencer):
+        self._sequencers.append(sequencer)
         return self
 
     def display_modified_shapes(self, display):
@@ -43,13 +43,13 @@ class ExerciseBuilder:
 
     def build(self):
         modified_shapes = self._try_get_shapes()
-        modified_shapes = self._apply_sequencers(modified_shapes, self.sequencers)
-        modified_shapes = self._apply_transformations(modified_shapes, self.transformers)
+        modified_shapes = self._apply_sequencers(modified_shapes, self._sequencers)
+        modified_shapes = self._apply_transformations(modified_shapes, self._transformers)
         modified_shapes = self._set_order_of_positions(modified_shapes)
 
         sequence = list(self._combine_sequences(modified_shapes))
 
-        shapes = self.shapes
+        shapes = self._shapes
         if self._display_modified_shapes:
             shapes = modified_shapes
 
@@ -57,7 +57,7 @@ class ExerciseBuilder:
 
     def _try_get_shapes(self):
         try:
-            return list(self.shapes[:])
+            return list(self._shapes[:])
 
         except TypeError:
             raise AttributeError("shapes must be set with set_shapes()")

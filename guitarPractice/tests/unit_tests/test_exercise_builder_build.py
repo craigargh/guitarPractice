@@ -112,7 +112,7 @@ class TestExerciseBuilderBuild(TestCase):
     def test_sequencer_is_applied_to_shape_sequence(self):
         exercise = ExerciseBuilder() \
             .set_shapes(self.shapes) \
-            .set_sequencer(reversed) \
+            .sequence(reversed) \
             .build()
 
         expected_sequence = [

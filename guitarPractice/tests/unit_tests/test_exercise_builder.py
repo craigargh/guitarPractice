@@ -16,7 +16,7 @@ class TestExerciseBuilder(TestCase):
         builder = ExerciseBuilder() \
             .set_shapes(self.shapes)
 
-        self.assertEqual(builder.shapes, self.shapes)
+        self.assertEqual(builder._shapes, self.shapes)
 
     def test_set_shapes_can_only_be_called_once(self):
         with self.assertRaises(AttributeError):
@@ -28,7 +28,7 @@ class TestExerciseBuilder(TestCase):
         builder = ExerciseBuilder() \
             .transform("transformer double")
 
-        self.assertEqual(builder.transformers, ["transformer double"])
+        self.assertEqual(builder._transformers, ["transformer double"])
 
     def test_can_add_multiple_transformers_to_exercise(self):
         builder = ExerciseBuilder() \
@@ -37,13 +37,13 @@ class TestExerciseBuilder(TestCase):
             .transform("c") \
             .transform("d")
 
-        self.assertEqual(builder.transformers, ["a", "b", "c", "d"])
+        self.assertEqual(builder._transformers, ["a", "b", "c", "d"])
 
     def test_set_rhythm_for_builder(self):
         builder = ExerciseBuilder() \
             .set_rhythm("rhythm")
 
-        self.assertEqual(builder.rhythm, "rhythm")
+        self.assertEqual(builder._rhythm, "rhythm")
 
     def test_can_only_set_rhythm_once(self):
         with self.assertRaises(AttributeError):
@@ -53,16 +53,16 @@ class TestExerciseBuilder(TestCase):
 
     def test_can_set_sequencer(self):
         builder = ExerciseBuilder() \
-            .set_sequencer("sequencer")
+            .sequence("sequencer")
 
-        self.assertEqual(builder.sequencers, ["sequencer"])
+        self.assertEqual(builder._sequencers, ["sequencer"])
 
     def test_can_set_multiple_sequencers(self):
         builder = ExerciseBuilder() \
-                .set_sequencer("sequencer") \
-                .set_sequencer("again")
+                .sequence("sequencer") \
+                .sequence("again")
 
-        self.assertEqual(builder.sequencers, ["sequencer", "again"])
+        self.assertEqual(builder._sequencers, ["sequencer", "again"])
 
     def test_can_set_display_modified_shapes(self):
         builder = ExerciseBuilder() \

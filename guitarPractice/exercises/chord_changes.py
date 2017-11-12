@@ -16,7 +16,7 @@ def level_one():
     repeater = partial(repeat_shapes, times=4)
 
     exercise = ExerciseBuilder() \
-        .set_sequencer(repeater) \
+        .sequence(repeater) \
         .set_shapes(shapes) \
         .build()
 
@@ -44,8 +44,8 @@ def level_two_variation_1():
 
     return ExerciseBuilder() \
         .set_shapes(chords) \
-        .set_sequencer(repeat_first_shape_sequencer) \
-        .set_sequencer(repeater) \
+        .sequence(repeat_first_shape_sequencer) \
+        .sequence(repeater) \
         .build()
 
 
@@ -59,7 +59,7 @@ def level_two_variation_2():
 
     return ExerciseBuilder() \
         .set_shapes(chords) \
-        .set_sequencer(repeater) \
+        .sequence(repeater) \
         .build()
 
 
