@@ -2,7 +2,7 @@ import jsonpickle
 from flask import Flask
 from flask_cors import CORS
 
-from guitarPractice.exercises.exercises import make_exercise
+from guitarPractice.exercises.exercise_factory import make_exercise
 
 app = Flask(__name__)
 CORS(app)

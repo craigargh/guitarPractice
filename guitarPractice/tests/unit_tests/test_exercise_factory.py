@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from guitarPractice.exercises.exercises import make_exercise
+from guitarPractice.exercises.exercise_factory import make_exercise
 
 
 class TestExercises(TestCase):
