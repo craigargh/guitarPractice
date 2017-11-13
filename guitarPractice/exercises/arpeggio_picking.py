@@ -59,9 +59,8 @@ def level_two():
 
 
 def get_level_two_chords(quantity):
-    all_chords = c_major_scale_triad_chords() + \
-                 c_major_scale_seven_chords() + \
-                 c_major_scale_add_9_chords()
+    alternate_chords = choice([c_major_scale_seven_chords, c_major_scale_add_9_chords])
+    all_chords = c_major_scale_triad_chords() + alternate_chords()
 
     return sample(all_chords, quantity)
 
