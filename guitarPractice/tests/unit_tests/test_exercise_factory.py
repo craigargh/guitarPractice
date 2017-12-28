@@ -58,6 +58,14 @@ class TestExercises(TestCase):
 
         self.assertEqual(len(exercises), 4)
 
+    def test_list_exercises_returns_each_exercise(self):
+        exercises = list_exercises()
+
+        self.assertEqual(exercises[0].group_id, 'arpeggio-picking')
+        self.assertEqual(exercises[1].group_id, 'chord-changes')
+        self.assertEqual(exercises[2].group_id, 'dexterity')
+        self.assertEqual(exercises[3].group_id, 'major-scale')
+
     def test_make_exercise_returns_exception_for_invalid_exercise_name(self):
         with self.assertRaises(ValueError):
             make_exercise('spooky-skeletons', 1)

@@ -10,7 +10,7 @@ from guitarPractice.exercises.exercise_group import ExerciseGroup
 def list_exercises():
     exercises = _get_exercise_map()
 
-    return exercises.keys()
+    return list(exercises.values())
 
 
 def make_exercise(exercise_name, difficulty):
