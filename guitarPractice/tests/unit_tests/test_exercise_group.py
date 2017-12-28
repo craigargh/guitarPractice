@@ -35,3 +35,30 @@ class TestExerciseGroup(TestCase):
         group = ExerciseGroup('picking-speed', description='Pick Faster')
 
         self.assertEqual(group.description, 'Pick Faster')
+
+    def test_url_is_generated_for_each_exercise(self):
+        group = ExerciseGroup('picking-speed')
+
+        group[1] = Mock()
+        group[2] = Mock()
+        group[6] = Mock()
+        group[3] = Mock()
+
+        urls = group.url_paths
+
+        self.assertEqual(len(urls), 4)
+
+    def test_url_paths_are_generated_with_group_id(self):
+        group = ExerciseGroup('picking-speed')
+
+        group[1] = Mock()
+        group[2] = Mock()
+        group[6] = Mock()
+        group[3] = Mock()
+
+        url_paths = group.url_paths
+
+        self.assertEqual(url_paths[1], '/exercises/picking-speed/1')
+        self.assertEqual(url_paths[2], '/exercises/picking-speed/2')
+        self.assertEqual(url_paths[6], '/exercises/picking-speed/6')
+        self.assertEqual(url_paths[3], '/exercises/picking-speed/3')
