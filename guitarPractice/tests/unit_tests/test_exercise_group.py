@@ -62,3 +62,36 @@ class TestExerciseGroup(TestCase):
         self.assertEqual(url_paths[2], '/exercise/picking-speed/2')
         self.assertEqual(url_paths[6], '/exercise/picking-speed/6')
         self.assertEqual(url_paths[3], '/exercise/picking-speed/3')
+
+    def test_to_dict_sets_group_id(self):
+        group = ExerciseGroup('picking-speed')
+        group_dict = group.to_dict()
+
+        self.assertEqual(group_dict['group_id'], 'picking-speed')
+
+    def test_to_dict_sets_name(self):
+        group = ExerciseGroup('picking-speed', name='Picking Speed')
+        group_dict = group.to_dict()
+
+        self.assertEqual(group_dict['name'], 'Picking Speed')
+
+    def test_to_dict_sets_description(self):
+        group = ExerciseGroup('picking-speed', description='Pick some speed')
+        group_dict = group.to_dict()
+
+        self.assertEqual(group_dict['description'], 'Pick some speed')
+
+    def test_to_dict_sets_urls(self):
+        group = ExerciseGroup('picking-speed')
+
+        group[1] = Mock()
+        group[2] = Mock()
+
+        group_dict = group.to_dict()
+
+        expected_urls = [
+            {'key': 1, 'path': '/exercise/picking-speed/1'},
+            {'key': 2, 'path': '/exercise/picking-speed/2'},
+        ]
+
+        self.assertEqual(group_dict['urls'], expected_urls)

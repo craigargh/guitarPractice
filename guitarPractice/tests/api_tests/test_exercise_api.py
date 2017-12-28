@@ -71,3 +71,38 @@ class TestExerciseApi(TestCase):
 
         self.assertIsNotNone(data['sequence'])
         self.assertIsNotNone(data['shapes'])
+
+    def test_get_exercises_returns_list_of_exercises(self):
+        response = self.api.get('/exercises/')
+        response_json = json.loads(response.data)
+
+        self.assertEqual(len(response_json), 4)
+
+    def test_get_exercises_have_group_id_property(self):
+        response = self.api.get('/exercises/')
+        response_json = json.loads(response.data)
+
+        self.assertEqual(response_json[0]['group_id'], 'arpeggio-picking')
+
+    def test_get_exercises_have_name_property(self):
+        response = self.api.get('/exercises/')
+        response_json = json.loads(response.data)
+
+        self.assertEqual(response_json[0]['name'], 'Arpeggio Picking')
+
+    def test_get_exercises_have_description_property(self):
+        response = self.api.get('/exercises/')
+        response_json = json.loads(response.data)
+
+        self.assertEqual(response_json[0]['description'], 'Pick some arpeggios')
+
+    def test_get_exercises_have_urls_for_levels(self):
+        response = self.api.get('/exercises/')
+        response_json = json.loads(response.data)
+
+        expected_urls = [
+            {'key': 1, 'path': '/exercise/arpeggio-picking/1'},
+            {'key': 2, 'path': '/exercise/arpeggio-picking/2'},
+        ]
+
+        self.assertEqual(response_json[0]['urls'], expected_urls)

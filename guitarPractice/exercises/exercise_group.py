@@ -22,3 +22,16 @@ class ExerciseGroup:
             exercise_id: f'/exercise/{self.group_id}/{exercise_id}'
             for exercise_id in self.exercises.keys()
         }
+
+    def to_dict(self):
+        urls = [
+            {'key': key, 'path': path}
+            for key, path in self.url_paths.items()
+        ]
+
+        return {
+            'group_id': self.group_id,
+            'name': self.name,
+            'description': self.description,
+            'urls': urls
+        }
