@@ -19,6 +19,6 @@ class ExerciseGroup:
     @property
     def url_paths(self):
         return {
-            exercise_id: f'/exercises/{self.group_id}/{exercise_id}'
+            exercise_id: f'/exercise/{self.group_id}/{exercise_id}'
             for exercise_id in self.exercises.keys()
         }

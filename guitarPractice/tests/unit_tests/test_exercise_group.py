@@ -58,7 +58,7 @@ class TestExerciseGroup(TestCase):
 
         url_paths = group.url_paths
 
-        self.assertEqual(url_paths[1], '/exercises/picking-speed/1')
-        self.assertEqual(url_paths[2], '/exercises/picking-speed/2')
-        self.assertEqual(url_paths[6], '/exercises/picking-speed/6')
-        self.assertEqual(url_paths[3], '/exercises/picking-speed/3')
+        self.assertEqual(url_paths[1], '/exercise/picking-speed/1')
+        self.assertEqual(url_paths[2], '/exercise/picking-speed/2')
+        self.assertEqual(url_paths[6], '/exercise/picking-speed/6')
+        self.assertEqual(url_paths[3], '/exercise/picking-speed/3')

@@ -4,6 +4,7 @@ from guitarPractice.exercises import (
     dexterity,
     major_scale
 )
+from guitarPractice.exercises.exercise_group import ExerciseGroup
 
 
 def list_exercises():
@@ -24,35 +25,61 @@ def make_exercise(exercise_name, difficulty):
 
 
 def _get_exercise_map():
+    exercise_groups = [
+        arpeggio_picking_exercises(),
+        chords_changes_exercises(),
+        dexterity_exercises(),
+        major_scale_exercises(),
+    ]
+
     return {
-        'arpeggio-picking': arpeggio_picking_levels(),
-        'chord-changes': chords_changes_levels(),
-        'dexterity': dexterity_levels(),
-        'major-scale': major_scale_levels(),
+        group.group_id: group
+        for group in exercise_groups
     }
 
 
-def arpeggio_picking_levels():
-    return {
-        1: arpeggio_picking.level_one,
-        2: arpeggio_picking.level_two
-    }
+def arpeggio_picking_exercises():
+    key = 'arpeggio-picking'
+    name = 'Arpeggio Picking'
+    description = 'Pick some arpeggios'
+
+    group = ExerciseGroup(key, name, description)
+    group[1] = arpeggio_picking.level_one
+    group[2] = arpeggio_picking.level_two
+
+    return group
 
 
-def chords_changes_levels():
-    return {
-        1: chord_changes.level_one,
-        2: chord_changes.level_two
-    }
+def chords_changes_exercises():
+    key = 'chord-changes'
+    name = 'Chord Change'
+    description = 'Change between chords'
+
+    group = ExerciseGroup(key, name, description)
+
+    group[1] = chord_changes.level_one
+    group[2] = chord_changes.level_two
+
+    return group
 
 
-def dexterity_levels():
-    return {
-        1: dexterity.level_one
-    }
+def dexterity_exercises():
+    key = 'dexterity'
+    name = 'Fretting hand dexterity'
+    description = 'Improve the dexterity of your fretting hand'
+
+    group = ExerciseGroup(key, name, description)
+    group[1] = dexterity.level_one
+
+    return group
 
 
-def major_scale_levels():
-    return {
-        1: major_scale.level_one
-    }
+def major_scale_exercises():
+    key = 'major-scale'
+    name = 'Major Scale Positions'
+    description = 'Learn the modes of the major scale'
+
+    group = ExerciseGroup(key, name, description)
+    group[1] = major_scale.level_one
+
+    return group
