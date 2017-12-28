@@ -6,13 +6,14 @@ from guitarPractice.exercises import (
 )
 
 
+def list_exercises():
+    exercises = _get_exercise_map()
+
+    return exercises.keys()
+
+
 def make_exercise(exercise_name, difficulty):
-    exercises = {
-        'arpeggio-picking': arpeggio_picking_levels(),
-        'chord-changes': chords_changes_levels(),
-        'dexterity': dexterity_levels(),
-        'major-scale': major_scale_levels(),
-    }
+    exercises = _get_exercise_map()
 
     try:
         exercise = exercises[exercise_name][difficulty]
@@ -20,6 +21,15 @@ def make_exercise(exercise_name, difficulty):
         raise ValueError('Invalid exercise name or difficulty')
 
     return exercise()
+
+
+def _get_exercise_map():
+    return {
+        'arpeggio-picking': arpeggio_picking_levels(),
+        'chord-changes': chords_changes_levels(),
+        'dexterity': dexterity_levels(),
+        'major-scale': major_scale_levels(),
+    }
 
 
 def arpeggio_picking_levels():

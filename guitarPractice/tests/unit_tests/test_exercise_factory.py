@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from guitarPractice.exercises.exercise_factory import make_exercise
+from guitarPractice.exercises.exercise_factory import make_exercise, list_exercises
 
 
 class TestExercises(TestCase):
@@ -52,6 +52,11 @@ class TestExercises(TestCase):
 
         mock.assert_called_once()
         self.assertEqual(exercise, 'major scale exercise')
+
+    def test_list_exercises_returns_a_list_of_exercises(self):
+        exercises = list_exercises()
+
+        self.assertEqual(len(exercises), 4)
 
     def test_make_exercise_returns_exception_for_invalid_exercise_name(self):
         with self.assertRaises(ValueError):
