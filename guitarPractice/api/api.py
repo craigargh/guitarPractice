@@ -33,11 +33,11 @@ def get_exercise(exercise_name, difficulty):
 
 @app.route('/exercises/', strict_slashes=False)
 def exercises():
-    exercises = list_exercises()
+    exercise_list = list_exercises()
 
     exercises_dicts = [
         exercise.to_dict()
-        for exercise in exercises
+        for exercise in exercise_list
     ]
 
     exercises_json = jsonpickle.encode(exercises_dicts, unpicklable=False)

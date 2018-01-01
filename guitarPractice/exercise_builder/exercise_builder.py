@@ -80,7 +80,6 @@ class ExerciseBuilder:
             for shape in copied_shapes
         ]
 
-
     @staticmethod
     def _apply_transformations(shapes, transformers):
         if transformers:
