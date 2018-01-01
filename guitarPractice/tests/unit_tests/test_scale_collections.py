@@ -8,3 +8,8 @@ class TestScaleCollections(TestCase):
         shapes = scale_collections.c_major_modes()
 
         self.assertEqual(7, len(shapes))
+
+    def test_c_major_pentatonic_modes_contains_5_shapes(self):
+        shapes = scale_collections.c_major_pentatonic_modes()
+
+        self.assertEqual(5, len(shapes))

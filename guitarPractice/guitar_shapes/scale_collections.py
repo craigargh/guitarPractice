@@ -1,4 +1,4 @@
-from guitarPractice.guitar_shapes import major_scale_shapes
+from guitarPractice.guitar_shapes import major_scale_shapes, pentatonic_scale_shapes
 
 
 def c_major_modes():
@@ -10,4 +10,14 @@ def c_major_modes():
         major_scale_shapes.g_mixolydian(),
         major_scale_shapes.a_aeolian(),
         major_scale_shapes.b_locrian(),
+    ]
+
+
+def c_major_pentatonic_modes():
+    return [
+        pentatonic_scale_shapes.c_major(),
+        pentatonic_scale_shapes.d_dorian(),
+        pentatonic_scale_shapes.e_phrygian(),
+        pentatonic_scale_shapes.g_mixolydian(),
+        pentatonic_scale_shapes.a_minor(),
     ]
