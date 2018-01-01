@@ -22,6 +22,6 @@ class TestSequencers(TestCase):
     def test_repeat_shapes_repeats_each_shape_a_number_of_times(self):
         repeater = partial(sequencers.repeat_shapes, times=2)
 
-        note_sequnce = repeater([self.shape1, self.shape2, self.shape3])
+        note_sequence = repeater([self.shape1, self.shape2, self.shape3])
 
-        self.assertEqual(note_sequnce, [['a', 'b'], ['a', 'b'], ['c', 'd'], ['c', 'd'], ['e', 'f'], ['e', 'f']])
+        self.assertEqual(note_sequence, [['a', 'b'], ['a', 'b'], ['c', 'd'], ['c', 'd'], ['e', 'f'], ['e', 'f']])
