@@ -53,10 +53,18 @@ class TestExercises(TestCase):
         mock.assert_called_once()
         self.assertEqual(exercise, 'major scale exercise')
 
+    @patch('guitarPractice.exercises.pentatonic_scale.level_one')
+    def test_make_exercise_returns_pentatonic_scale_level_one(self, mock):
+        mock.return_value = 'pentatonic scale exercise'
+        exercise = make_exercise('pentatonic-scale', 1)
+
+        mock.assert_called_once()
+        self.assertEqual(exercise, 'pentatonic scale exercise')
+
     def test_list_exercises_returns_a_list_of_exercises(self):
         exercises = list_exercises()
 
-        self.assertEqual(len(exercises), 4)
+        self.assertEqual(len(exercises), 5)
 
     def test_list_exercises_returns_each_exercise(self):
         exercises = list_exercises()
@@ -65,6 +73,7 @@ class TestExercises(TestCase):
         self.assertEqual(exercises[1].group_id, 'chord-changes')
         self.assertEqual(exercises[2].group_id, 'dexterity')
         self.assertEqual(exercises[3].group_id, 'major-scale')
+        self.assertEqual(exercises[4].group_id, 'pentatonic-scale')
 
     def test_make_exercise_returns_exception_for_invalid_exercise_name(self):
         with self.assertRaises(ValueError):

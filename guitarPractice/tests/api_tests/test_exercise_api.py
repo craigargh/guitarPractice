@@ -72,11 +72,23 @@ class TestExerciseApi(TestCase):
         self.assertIsNotNone(data['sequence'])
         self.assertIsNotNone(data['shapes'])
 
+    def test_get_pentatonic_scale_one_exercise_returns_ok(self):
+        response = self.api.get('/exercise/pentatonic-scale/1/')
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_pentatonic_scale_one_has_shapes_and_sequence(self):
+        response = self.api.get('/exercise/pentatonic-scale/1/')
+        data = json.loads(response.data)
+
+        self.assertIsNotNone(data['sequence'])
+        self.assertIsNotNone(data['shapes'])
+
     def test_get_exercises_returns_list_of_exercises(self):
         response = self.api.get('/exercises/')
         response_json = json.loads(response.data)
 
-        self.assertEqual(len(response_json), 4)
+        self.assertEqual(len(response_json), 5)
 
     def test_get_exercises_have_group_id_property(self):
         response = self.api.get('/exercises/')

@@ -2,7 +2,8 @@ from guitarPractice.exercises import (
     arpeggio_picking,
     chord_changes,
     dexterity,
-    major_scale
+    major_scale,
+    pentatonic_scale
 )
 from guitarPractice.exercises.exercise_group import ExerciseGroup
 
@@ -30,6 +31,7 @@ def _get_exercise_map():
         chords_changes_exercises(),
         dexterity_exercises(),
         major_scale_exercises(),
+        pentatonic_scale_exercises(),
     ]
 
     return {
@@ -81,5 +83,16 @@ def major_scale_exercises():
 
     group = ExerciseGroup(key, name, description)
     group[1] = major_scale.level_one
+
+    return group
+
+
+def pentatonic_scale_exercises():
+    key = 'pentatonic-scale'
+    name = 'Pentatonic Scale Positions'
+    description = 'Learn the modes of the pentatonic scale'
+
+    group = ExerciseGroup(key, name, description)
+    group[1] = pentatonic_scale.level_one
 
     return group
