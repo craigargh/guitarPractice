@@ -40,14 +40,24 @@ class PositionTest(TestCase):
         self.assertEqual(0, position.finger)
 
     def test_duration_is_set(self):
-        position = Position(guitar_string=1, duration=0.5)
+        position = Position(guitar_string=1, duration=2)
 
-        self.assertEqual(position.duration, 0.5)
+        self.assertEqual(position.duration, 2)
 
     def test_default_duration_is_set(self):
         position = Position(guitar_string=1)
 
         self.assertEqual(position.duration, 1)
+
+    def test_note_subdivision_is_set(self):
+        position = Position(guitar_string=1, note_subdivision=2)
+
+        self.assertEqual(position.note_subdivision, 2)
+
+    def test_default_note_subdivision_is_set(self):
+        position = Position(guitar_string=1)
+
+        self.assertEqual(position.note_subdivision, 1)
 
     def test_str_returns_a_description_of_the_position(self):
         position = Position(guitar_string=1, finger=2, fret=3)
