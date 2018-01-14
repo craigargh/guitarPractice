@@ -7,7 +7,6 @@ from guitarPractice.exercise_builder.exercise import Exercise
 class ExerciseBuilder:
     def __init__(self):
         self._shapes = None
-        self._rhythm = None
         self._sequencers = []
 
         self._transformers = []
@@ -23,13 +22,6 @@ class ExerciseBuilder:
     def transform(self, transformer):
         self._transformers.append(transformer)
 
-        return self
-
-    def set_rhythm(self, rhythm):
-        if self._rhythm is not None:
-            raise AttributeError("Can only set the rhythm once")
-
-        self._rhythm = rhythm
         return self
 
     def sequence(self, sequencer):
