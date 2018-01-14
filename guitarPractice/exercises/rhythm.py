@@ -1,4 +1,5 @@
 from functools import partial
+from random import randint
 
 from guitarPractice.exercise_builder.exercise_builder import ExerciseBuilder
 from guitarPractice.exercise_builder.transformers.rhythm import random_rhythm_factory, Beat, set_rhythm
@@ -8,8 +9,11 @@ from guitarPractice.guitar_shapes.position import Position
 
 
 def level_one():
+    guitar_string = randint(1, 6)
+    fret = randint(0, 7)
+
     positions = [
-        Position(guitar_string=6, fret=5, finger=1)
+        Position(guitar_string=guitar_string, fret=fret, finger=1)
         for _ in range(16)
     ]
 
