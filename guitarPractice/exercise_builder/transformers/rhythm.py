@@ -1,4 +1,5 @@
-from itertools import cycle
+import random
+from itertools import cycle, chain
 
 
 class Beat:
@@ -15,3 +16,14 @@ def set_rhythm(positions, rhythm):
         position.note_subdivision = beat.note_subdivision
 
     return positions
+
+
+def random_rhythm_factory(beats_length, beat_sequences):
+    rhythm_choices = [
+        random.choice(beat_sequences)
+        for _ in range(beats_length)
+    ]
+
+    rhythm = chain.from_iterable(rhythm_choices)
+
+    return list(rhythm)
