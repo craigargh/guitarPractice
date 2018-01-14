@@ -60,19 +60,6 @@ class TestRhythmTransformers(TestCase):
         self.assertEqual(updated_sequence[1].duration, 3)
         self.assertEqual(updated_sequence[2].duration, 3)
 
-    def test_set_rhythm_repeats_beats_to_length_of_sequence(self):
-        sequence = [
-            Position(guitar_string=1),
-            Position(guitar_string=2),
-            Position(guitar_string=3),
-        ]
-
-        rhythm = [
-            Beat(duration=3, note_subdivision=6),
-        ]
-
-        updated_sequence = set_rhythm(sequence, rhythm)
-
         self.assertEqual(updated_sequence[0].note_subdivision, 6)
         self.assertEqual(updated_sequence[1].note_subdivision, 6)
         self.assertEqual(updated_sequence[2].note_subdivision, 6)
