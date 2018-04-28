@@ -1,12 +1,10 @@
 class Position:
     def __init__(self, *, guitar_string: int, fret: int = 0, finger: int = 0, is_highlighted: bool = False,
-                 duration: float = 1, order: int = None, note_subdivision: int = 1):
+                 order: int = None):
         self.fret = fret
         self.guitar_string = guitar_string
         self.finger = finger
         self.is_highlighted = is_highlighted
-        self.duration = duration
-        self.note_subdivision = note_subdivision
         self.order = order
 
     def __str__(self):
