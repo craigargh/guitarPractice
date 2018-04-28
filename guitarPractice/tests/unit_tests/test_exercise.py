@@ -37,6 +37,18 @@ class TestExercise(TestCase):
         self.assertEqual(expected_rhythm, exercise.rhythm)
 
     def test_rhythm_defaults_to_eighth_notes(self):
+        exercise = Exercise(shapes=[1, 2, 3, 4], sequence=make_sequence(4))
+
+        expected_rhythm = [
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+        ]
+
+        self.assertEqual(expected_rhythm, exercise.rhythm)
+
+    def test_rhythm_default_ends_on_full_note_for_odd_number_of_beats(self):
         exercise = Exercise(shapes=[1, 2, 3, 4], sequence=make_sequence(5))
 
         expected_rhythm = [
@@ -44,7 +56,7 @@ class TestExercise(TestCase):
             {'duration': 1, 'division': 8},
             {'duration': 1, 'division': 8},
             {'duration': 1, 'division': 8},
-            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 4},
         ]
 
         self.assertEqual(expected_rhythm, exercise.rhythm)

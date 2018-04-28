@@ -23,7 +23,16 @@ def make_default_rhythm(sequence):
         for item in sequence
     }
 
-    return [
+    if len(beats) % 2 == 0:
+        length = len(beats)
+        last_beat = []
+    else:
+        length = len(beats) - 1
+        last_beat = [{'duration': 1, 'division': 4}]
+
+    eighth_beats = [
         {'duration': 1, 'division': 8}
-        for _ in beats
+        for _ in range(length)
     ]
+
+    return eighth_beats + last_beat
