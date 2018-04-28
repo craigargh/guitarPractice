@@ -1,5 +1,6 @@
 from copy import deepcopy
 from itertools import chain
+from operator import attrgetter
 
 from guitarPractice.exercise_builder.exercise import Exercise
 
@@ -12,11 +13,20 @@ class ExerciseBuilder:
         self._transformers = []
         self._display_modified_shapes = False
 
+        self._rhythm = None
+
     def set_shapes(self, shapes):
         if self._shapes is not None:
             raise AttributeError("Can only set the exercises shapes once")
 
         self._shapes = shapes
+        return self
+
+    def set_rhythm(self, rhythm):
+        if self._rhythm is not None:
+            raise AttributeError("Can only set rhythm once")
+
+        self._rhythm = rhythm
         return self
 
     def transform(self, transformer):
@@ -41,11 +51,13 @@ class ExerciseBuilder:
 
         sequence = list(self._combine_sequences(modified_shapes))
 
+        rhythm = self._make_rhythm(self._rhythm, sequence)
+
         shapes = self._shapes
         if self._display_modified_shapes:
             shapes = modified_shapes
 
-        return Exercise(shapes=shapes, sequence=sequence)
+        return Exercise(shapes=shapes, sequence=sequence, rhythm=rhythm)
 
     def _try_get_shapes(self):
         try:
@@ -115,3 +127,11 @@ class ExerciseBuilder:
         ]
 
         return chain.from_iterable(positions)
+
+    @staticmethod
+    def _make_rhythm(rhythm_generator, sequence):
+        if rhythm_generator is None:
+            return None
+
+        beats = max(sequence, key=attrgetter('order'))
+        return rhythm_generator(beats.order + 1)

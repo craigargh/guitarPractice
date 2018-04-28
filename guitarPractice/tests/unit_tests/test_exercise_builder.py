@@ -24,6 +24,12 @@ class TestExerciseBuilder(TestCase):
                 .set_shapes(self.shapes) \
                 .set_shapes(self.shapes)
 
+    def test_set_rhythm_sets_rhythm(self):
+        builder = ExerciseBuilder() \
+            .set_rhythm([1, 2, 3, 4])
+
+        self.assertEqual(builder._rhythm, [1, 2, 3, 4])
+
     def test_transform_adds_transformer_to_exercise(self):
         builder = ExerciseBuilder() \
             .transform("transformer double")
@@ -53,8 +59,8 @@ class TestExerciseBuilder(TestCase):
 
     def test_can_set_multiple_sequencers(self):
         builder = ExerciseBuilder() \
-                .sequence("sequencer") \
-                .sequence("again")
+            .sequence("sequencer") \
+            .sequence("again")
 
         self.assertEqual(builder._sequencers, ["sequencer", "again"])
 
