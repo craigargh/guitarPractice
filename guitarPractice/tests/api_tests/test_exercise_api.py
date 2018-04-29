@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from flask import json
 
-from guitarPractice.api.api import app
+from guitarPractice.api.flask_api import app
 
 
 class TestExerciseApi(TestCase):
