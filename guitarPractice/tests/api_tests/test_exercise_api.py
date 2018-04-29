@@ -157,7 +157,6 @@ class TestExerciseApi(TestCase):
 
         self.assertIsNotNone(data['rhythm'])
 
-
     def test_get_exercises_returns_list_of_exercises(self):
         response = self.api.get('/exercises/')
         response_json = json.loads(response.data)
