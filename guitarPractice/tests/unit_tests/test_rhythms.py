@@ -27,7 +27,7 @@ class TestRandomFromSelection(TestCase):
             ],
         ]
 
-        result = random_choices(4, choices)
+        result = random_choices(4, choices, 7)
 
         self.assertEqual(7, len(result))
 
@@ -42,7 +42,7 @@ class TestRandomFromSelection(TestCase):
             ],
         ]
 
-        result = random_choices(4, choices)
+        result = random_choices(4, choices, 7)
 
         expected_result = [
             {'duration': 1, 'division': 8},
@@ -54,4 +54,46 @@ class TestRandomFromSelection(TestCase):
             {'duration': 1, 'division': 8}
         ]
 
+        self.assertEqual(expected_result, result)
+
+    def test_longer_sequence_length_extends_rhythm(self):
+        choices = [
+            [
+                {'duration': 1, 'division': 8},
+                {'duration': 1, 'division': 8}
+            ],
+        ]
+
+        result = random_choices(2, choices, 8)
+
+        expected_result = [
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+        ]
+
+        self.assertEqual(8, len(result))
+        self.assertEqual(expected_result, result)
+
+    def test_shorter_sequence_length_shortens_rhythm(self):
+        choices = [
+            [
+                {'duration': 1, 'division': 8},
+                {'duration': 1, 'division': 8}
+            ],
+        ]
+
+        result = random_choices(4, choices, 2)
+
+        expected_result = [
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+        ]
+
+        self.assertEqual(2, len(result))
         self.assertEqual(expected_result, result)

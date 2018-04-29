@@ -134,4 +134,4 @@ class ExerciseBuilder:
             return None
 
         beats = max(sequence, key=attrgetter('order'))
-        return rhythm_generator(beats.order + 1)
+        return rhythm_generator(sequence_length=beats.order + 1)

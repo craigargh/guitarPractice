@@ -219,10 +219,10 @@ class TestExerciseBuilderBuild(TestCase):
         self.assertEqual(9, exercise.shapes[1].positions[3].guitar_string)
 
     def test_rhythm_is_generated_for_every_sequence_item(self):
-        def rhythm_generator(beats):
+        def rhythm_generator(sequence_length):
             return [
                 {'duration': 1, 'division': 16}
-                for _ in range(beats)
+                for _ in range(sequence_length)
             ]
 
         exercise = ExerciseBuilder() \
