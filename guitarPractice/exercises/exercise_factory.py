@@ -3,7 +3,9 @@ from guitarPractice.exercises import (
     chord_changes,
     dexterity,
     major_scale,
-    pentatonic_scale)
+    pentatonic_scale,
+    lead_rhythm
+)
 from guitarPractice.exercises.exercise_group import ExerciseGroup
 
 
@@ -31,6 +33,7 @@ def _get_exercise_map():
         dexterity_exercises(),
         major_scale_exercises(),
         pentatonic_scale_exercises(),
+        lead_rhythm_exercises(),
     ]
 
     return {
@@ -93,5 +96,17 @@ def pentatonic_scale_exercises():
 
     group = ExerciseGroup(key, name, description)
     group[1] = pentatonic_scale.level_one
+
+    return group
+
+
+def lead_rhythm_exercises():
+    key = 'lead-rhythm'
+    name = 'Lead Rhythm'
+    description = 'Practice rhythmic picking with scales'
+
+    group = ExerciseGroup(key, name, description)
+    group[1] = lead_rhythm.level_one
+    group[2] = lead_rhythm.level_two
 
     return group

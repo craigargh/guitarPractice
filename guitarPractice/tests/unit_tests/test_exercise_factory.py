@@ -64,7 +64,7 @@ class TestExercises(TestCase):
     def test_list_exercises_returns_a_list_of_exercises(self):
         exercises = list_exercises()
 
-        self.assertEqual(len(exercises), 5)
+        self.assertEqual(len(exercises), 6)
 
     def test_list_exercises_returns_each_exercise(self):
         exercises = list_exercises()
