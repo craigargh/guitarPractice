@@ -1,4 +1,5 @@
 import random
+from itertools import cycle
 from unittest import TestCase
 from unittest.mock import patch
 
@@ -153,6 +154,46 @@ class TestBeatsRounding(TestCase):
         result = round_rhythm(rhythm)
 
         expected_rhythm = [
+            {'duration': 1, 'division': 4},
+        ]
+
+        self.assertEqual(expected_rhythm, result)
+
+    def test_mixed_rhythm_takes_deep_copies_of_rhythm(self):
+        rhythm = [
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 4}
+        ]
+
+        rhythm_cycle = cycle(rhythm)
+
+        chosen_rhythm = [
+            next(rhythm_cycle)
+            for _ in range(15)
+        ]
+
+        result = round_rhythm(chosen_rhythm)
+
+        expected_rhythm = [
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 4},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 4},
             {'duration': 1, 'division': 4},
         ]
 
