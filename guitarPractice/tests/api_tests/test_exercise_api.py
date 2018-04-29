@@ -134,6 +134,30 @@ class TestExerciseApi(TestCase):
 
         self.assertIsNotNone(data['rhythm'])
 
+    def test_get_lead_rhythm_two_exercise_returns_ok(self):
+        response = self.api.get('/exercise/lead-rhythm/1/')
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_lead_rhythm_two_has_shapes(self):
+        response = self.api.get('/exercise/lead-rhythm/1/')
+        data = json.loads(response.data)
+
+        self.assertIsNotNone(data['shapes'])
+
+    def test_get_lead_rhythm_two_has_sequence(self):
+        response = self.api.get('/exercise/lead-rhythm/1/')
+        data = json.loads(response.data)
+
+        self.assertIsNotNone(data['sequence'])
+
+    def test_get_lead_rhythm_two_has_rhythm(self):
+        response = self.api.get('/exercise/lead-rhythm/1/')
+        data = json.loads(response.data)
+
+        self.assertIsNotNone(data['rhythm'])
+
+
     def test_get_exercises_returns_list_of_exercises(self):
         response = self.api.get('/exercises/')
         response_json = json.loads(response.data)
