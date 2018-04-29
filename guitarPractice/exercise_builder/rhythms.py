@@ -14,7 +14,7 @@ def random_choices(beats, rhythms, sequence_length):
         for _ in range(sequence_length)
     ]
 
-    return chosen_rhythm
+    return round_rhythm(chosen_rhythm)
 
 
 def round_rhythm(rhythms):
