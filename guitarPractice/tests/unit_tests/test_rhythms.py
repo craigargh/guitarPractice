@@ -2,7 +2,7 @@ import random
 from unittest import TestCase
 from unittest.mock import patch
 
-from guitarPractice.exercise_builder.rhythms import random_choices
+from guitarPractice.exercise_builder.rhythms import random_choices, round_rhythm
 
 
 class TestRandomFromSelection(TestCase):
@@ -97,3 +97,63 @@ class TestRandomFromSelection(TestCase):
 
         self.assertEqual(2, len(result))
         self.assertEqual(expected_result, result)
+
+
+class TestBeatsRounding(TestCase):
+    def test_odd_eighth_rhythm_is_rounded_to_quarter_beat(self):
+        rhythm = [
+            {'duration': 1, 'division': 8},
+        ]
+
+        result = round_rhythm(rhythm)
+
+        expected_rhythm = [
+            {'duration': 1, 'division': 4}
+        ]
+
+        self.assertEqual(expected_rhythm, result)
+
+    def test_odd_sixteenth_rhythm_is_rounded_to_eighth_beat(self):
+        rhythm = [
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+        ]
+
+        result = round_rhythm(rhythm)
+
+        expected_rhythm = [
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 8},
+        ]
+
+        self.assertEqual(expected_rhythm, result)
+
+    def test_odd_sixteenth_beats_are_rounded_to_to_eighth_beats(self):
+        rhythm = [
+            {'duration': 1, 'division': 16},
+            {'duration': 1, 'division': 16},
+        ]
+
+        result = round_rhythm(rhythm)
+
+        expected_rhythm = [
+            {'duration': 1, 'division': 8},
+            {'duration': 1, 'division': 8},
+        ]
+
+        self.assertEqual(expected_rhythm, result)
+
+    def test_odd_sixteenth_beat_is_rounded_to_to_quarter_beats(self):
+        rhythm = [
+            {'duration': 1, 'division': 16},
+        ]
+
+        result = round_rhythm(rhythm)
+
+        expected_rhythm = [
+            {'duration': 1, 'division': 4},
+        ]
+
+        self.assertEqual(expected_rhythm, result)
