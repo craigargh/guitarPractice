@@ -8,15 +8,6 @@ class Exercise:
         self.rhythm = rhythm
 
 
-def make_beat_tab(sequence, beat, guitar_string):
-    found_value = "--"
-    for item in sequence:
-        if item.order == beat and item.guitar_string == guitar_string:
-            found_value = f"{item.fret}-"
-
-    return found_value
-
-
 def make_default_rhythm(sequence):
     beats = {
         item.order
