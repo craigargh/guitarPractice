@@ -1,3 +1,10 @@
+from copy import deepcopy
+from itertools import groupby
+from operator import attrgetter
+
+from guitarPractice.exercise_builder.rhythms import make_default_rhythm
+
+
 class Exercise:
     def __init__(self, shapes, sequence, rhythm=None):
         if not rhythm:
@@ -7,26 +14,40 @@ class Exercise:
         self.sequence = sequence
         self.rhythm = rhythm
 
+    def as_dict(self):
+        grouped_positions = self.group_positions(self.sequence)
+        positions_with_rhythm = self.combine_rhythm(self.rhythm, grouped_positions)
 
-def make_default_rhythm(sequence):
-    beats = {
-        item.order
-        for item in sequence
-    }
+        return {
+            'sequence': positions_with_rhythm,
+            'shapes': [shape.as_dict() for shape in self.shapes],
+        }
 
-    is_even_beats = len(beats) % 2 == 0
+    @staticmethod
+    def group_positions(sequence):
+        sorted_sequence = sorted(sequence, key=attrgetter('order'))
+        grouped_sequence = groupby(sorted_sequence, key=attrgetter('order'))
 
-    if is_even_beats:
-        length = len(beats)
-        last_beat = []
-        
-    else:
-        length = len(beats) - 1
-        last_beat = [{'duration': 1, 'division': 4}]
+        grouped_positions = []
+        for index, positions in grouped_sequence:
+            positions = [
+                position.as_dict()
+                for position in positions
+            ]
 
-    eighth_beats = [
-        {'duration': 1, 'division': 8}
-        for _ in range(length)
-    ]
+            grouped_positions.append(
+                {
+                    'order': index,
+                    'positions': positions
+                }
+            )
+        return grouped_positions
 
-    return eighth_beats + last_beat
+    @staticmethod
+    def combine_rhythm(rhythms, grouped_positions):
+        grouped_positions = deepcopy(grouped_positions)
+
+        for group, rhythm in zip(grouped_positions, rhythms):
+            group['rhythm'] = rhythm
+
+        return grouped_positions

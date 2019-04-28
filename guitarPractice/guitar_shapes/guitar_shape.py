@@ -75,3 +75,11 @@ class GuitarShape:
         ]
 
         return transformed_shape
+
+    def as_dict(self):
+        return {
+            'root_note': self.root_note,
+            'tonality': self.tonality,
+            'positions': [position.as_dict() for position in self.positions],
+            'is_picked': self.is_picked,
+        }

@@ -19,3 +19,11 @@ class Position:
         same_finger = self.finger == other.finger
 
         return same_string and same_fret and same_finger
+
+    def as_dict(self):
+        return {
+            'fret': self.fret,
+            'guitar_string': self.guitar_string,
+            'finger': self.finger,
+            'is_highlighted': self.is_highlighted,
+        }
