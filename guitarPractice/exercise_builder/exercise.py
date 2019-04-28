@@ -14,9 +14,12 @@ def make_default_rhythm(sequence):
         for item in sequence
     }
 
-    if len(beats) % 2 == 0:
+    is_even_beats = len(beats) % 2 == 0
+
+    if is_even_beats:
         length = len(beats)
         last_beat = []
+        
     else:
         length = len(beats) - 1
         last_beat = [{'duration': 1, 'division': 4}]
